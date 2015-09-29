@@ -26,14 +26,10 @@ namespace WhereIsMyBeer
         public Form1()
         {
             InitializeComponent();
+            progressBar1.Minimum = 0;
+            progressBar1.Maximum = 100;
+            progressBar1.Value = 50;
         }
-        private void setStudentParameters(PictureBox student)
-        {
-            student.BackColor = Color.Black;
-            student.Left = 450;
-            student.Top = 200;
-        }
-
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
             if (jump != true)
@@ -69,6 +65,17 @@ namespace WhereIsMyBeer
             else
             {
                 Nakov.Top += 1;
+            }
+            for (int j = 0; j < obstacles.Count; j++)
+			{
+                if (Nakov.Location.X == obstacles[j].Location.X && Nakov.Location.Y >= obstacles[j].Location.Y)
+                {
+                    progressBar1.Value -= 5;
+                    if (progressBar1.Value == progressBar1.Minimum)
+                    {
+                        Close();
+                    }
+                }
             }
         }
 
@@ -128,6 +135,11 @@ namespace WhereIsMyBeer
             obstacles[indexObstacles].Left = 450;
             Screen.Controls.Add(obstacles[indexObstacles]);
             indexObstacles++;
+        }
+
+        private void progressBar1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

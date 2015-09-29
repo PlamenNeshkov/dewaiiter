@@ -35,6 +35,8 @@
             this.PlayerMovement = new System.Windows.Forms.Timer(this.components);
             this.ObstaclesCreation = new System.Windows.Forms.Timer(this.components);
             this.ObstaclesMovement = new System.Windows.Forms.Timer(this.components);
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.label1 = new System.Windows.Forms.Label();
             this.Screen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Nakov)).BeginInit();
             this.SuspendLayout();
@@ -57,6 +59,15 @@
             this.Ground.Size = new System.Drawing.Size(448, 12);
             this.Ground.TabIndex = 1;
             this.Ground.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(137, 30);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(181, 23);
+            this.progressBar1.TabIndex = 0;
+            this.progressBar1.Click += new System.EventHandler(this.progressBar1_Click);
+
             // 
             // Nakov
             // 
@@ -85,6 +96,16 @@
             this.ObstaclesMovement.Interval = 40;
             this.ObstaclesMovement.Tick += new System.EventHandler(this.ObstaclesMovement_Tick);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(179, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(96, 18);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Beer-o-meter";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -109,6 +130,8 @@
         private System.Windows.Forms.Panel Ground;
         private System.Windows.Forms.Timer ObstaclesCreation;
         private System.Windows.Forms.Timer ObstaclesMovement;
+        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.Label label1;
     }
 }
 
