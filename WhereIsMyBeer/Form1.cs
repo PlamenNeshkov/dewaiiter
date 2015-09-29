@@ -42,7 +42,7 @@ namespace WhereIsMyBeer
                 if (e.Modifiers == Keys.Shift && e.KeyCode == Keys.Space)
                 {
                     jump = true;
-                    force = g + 4;
+                    force = g + 5;
                 }
             }
         }
@@ -66,15 +66,12 @@ namespace WhereIsMyBeer
             {
                 Nakov.Top += 1;
             }
-            for (int j = 0; j < obstacles.Count; j++)
-			{
-                if (Nakov.Location.X == obstacles[j].Location.X && Nakov.Location.Y >= obstacles[j].Location.Y)
+            if (Nakov.Location.X == obstacle.Location.X && Nakov.Location.Y >= obstacle.Location.Y)
+            {
+                progressBar1.Value -= 5;
+                if (progressBar1.Value == progressBar1.Minimum)
                 {
-                    progressBar1.Value -= 5;
-                    if (progressBar1.Value == progressBar1.Minimum)
-                    {
-                        Close();
-                    }
+                    Close();
                 }
             }
         }
@@ -135,11 +132,6 @@ namespace WhereIsMyBeer
             obstacles[indexObstacles].Left = 450;
             Screen.Controls.Add(obstacles[indexObstacles]);
             indexObstacles++;
-        }
-
-        private void progressBar1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
