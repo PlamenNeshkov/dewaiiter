@@ -30,19 +30,23 @@
         {
             this.components = new System.ComponentModel.Container();
             this.screen = new System.Windows.Forms.Panel();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.bigObject = new System.Windows.Forms.Panel();
             this.student = new System.Windows.Forms.Panel();
             this.graund = new System.Windows.Forms.Panel();
             this.nakov = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
-            this.bigObject = new System.Windows.Forms.Panel();
             this.timer3 = new System.Windows.Forms.Timer(this.components);
+            this.label1 = new System.Windows.Forms.Label();
             this.screen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nakov)).BeginInit();
             this.SuspendLayout();
             // 
             // screen
             // 
+            this.screen.Controls.Add(this.label1);
+            this.screen.Controls.Add(this.progressBar1);
             this.screen.Controls.Add(this.bigObject);
             this.screen.Controls.Add(this.student);
             this.screen.Controls.Add(this.graund);
@@ -53,10 +57,27 @@
             this.screen.Size = new System.Drawing.Size(448, 262);
             this.screen.TabIndex = 0;
             // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(137, 30);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(181, 23);
+            this.progressBar1.TabIndex = 0;
+            this.progressBar1.Click += new System.EventHandler(this.progressBar1_Click);
+            // 
+            // bigObject
+            // 
+            this.bigObject.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.bigObject.Location = new System.Drawing.Point(411, 209);
+            this.bigObject.Name = "bigObject";
+            this.bigObject.Size = new System.Drawing.Size(25, 41);
+            this.bigObject.TabIndex = 3;
+            this.bigObject.Paint += new System.Windows.Forms.PaintEventHandler(this.bigObject_Paint);
+            // 
             // student
             // 
             this.student.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.student.Location = new System.Drawing.Point(209, 224);
+            this.student.Location = new System.Drawing.Point(209, 225);
             this.student.Name = "student";
             this.student.Size = new System.Drawing.Size(25, 25);
             this.student.TabIndex = 2;
@@ -74,7 +95,7 @@
             // nakov
             // 
             this.nakov.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.nakov.Location = new System.Drawing.Point(12, 224);
+            this.nakov.Location = new System.Drawing.Point(12, 225);
             this.nakov.Name = "nakov";
             this.nakov.Size = new System.Drawing.Size(25, 25);
             this.nakov.TabIndex = 0;
@@ -93,20 +114,21 @@
             this.timer2.Interval = 1;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
-            // bigObject
-            // 
-            this.bigObject.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.bigObject.Location = new System.Drawing.Point(411, 200);
-            this.bigObject.Name = "bigObject";
-            this.bigObject.Size = new System.Drawing.Size(25, 50);
-            this.bigObject.TabIndex = 3;
-            this.bigObject.Paint += new System.Windows.Forms.PaintEventHandler(this.bigObject_Paint);
-            // 
             // timer3
             // 
             this.timer3.Enabled = true;
             this.timer3.Interval = 1;
             this.timer3.Tick += new System.EventHandler(this.timer3_Tick);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(179, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(96, 18);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Beer-o-meter";
             // 
             // Form1
             // 
@@ -118,6 +140,7 @@
             this.Text = "WhereIsMyBeer";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.screen.ResumeLayout(false);
+            this.screen.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nakov)).EndInit();
             this.ResumeLayout(false);
 
@@ -133,6 +156,8 @@
         private System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.Panel bigObject;
         private System.Windows.Forms.Timer timer3;
+        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.Label label1;
     }
 }
 

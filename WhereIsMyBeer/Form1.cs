@@ -19,6 +19,9 @@ namespace WhereIsMyBeer
         public Form1()
         {
             InitializeComponent();
+            progressBar1.Minimum = 0;
+            progressBar1.Maximum = 100;
+            progressBar1.Value = 50;
         }
 
         private void nakov_Click(object sender, EventArgs e)
@@ -59,6 +62,22 @@ namespace WhereIsMyBeer
             {
                 nakov.Top += 5;
             }
+            if (nakov.Location.X == student.Location.X && nakov.Location.Y >= student.Location.Y)
+            {
+                progressBar1.Value -= 5;
+                if (progressBar1.Value == progressBar1.Minimum)
+                {
+                    Close();
+                }
+            }
+            if (nakov.Location.X == bigObject.Location.X && nakov.Location.Y >= bigObject.Location.Y)
+            {
+                progressBar1.Value -= 5;
+                if (progressBar1.Value == progressBar1.Minimum)
+                {
+                    Close();
+                }
+            }
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -94,5 +113,11 @@ namespace WhereIsMyBeer
                 bigObject.Left = screen.Right;
             }
         }
+
+        private void progressBar1_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }
