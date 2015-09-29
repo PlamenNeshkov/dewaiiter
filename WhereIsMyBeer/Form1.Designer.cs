@@ -29,110 +29,86 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.screen = new System.Windows.Forms.Panel();
-            this.student = new System.Windows.Forms.Panel();
-            this.graund = new System.Windows.Forms.Panel();
-            this.nakov = new System.Windows.Forms.PictureBox();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.timer2 = new System.Windows.Forms.Timer(this.components);
-            this.bigObject = new System.Windows.Forms.Panel();
-            this.timer3 = new System.Windows.Forms.Timer(this.components);
-            this.screen.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nakov)).BeginInit();
+            this.Screen = new System.Windows.Forms.Panel();
+            this.Ground = new System.Windows.Forms.Panel();
+            this.Nakov = new System.Windows.Forms.PictureBox();
+            this.PlayerMovement = new System.Windows.Forms.Timer(this.components);
+            this.ObstaclesCreation = new System.Windows.Forms.Timer(this.components);
+            this.ObstaclesMovement = new System.Windows.Forms.Timer(this.components);
+            this.Screen.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Nakov)).BeginInit();
             this.SuspendLayout();
             // 
-            // screen
+            // Screen
             // 
-            this.screen.Controls.Add(this.bigObject);
-            this.screen.Controls.Add(this.student);
-            this.screen.Controls.Add(this.graund);
-            this.screen.Controls.Add(this.nakov);
-            this.screen.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.screen.Location = new System.Drawing.Point(0, 0);
-            this.screen.Name = "screen";
-            this.screen.Size = new System.Drawing.Size(448, 262);
-            this.screen.TabIndex = 0;
+            this.Screen.Controls.Add(this.Ground);
+            this.Screen.Controls.Add(this.Nakov);
+            this.Screen.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Screen.Location = new System.Drawing.Point(0, 0);
+            this.Screen.Name = "Screen";
+            this.Screen.Size = new System.Drawing.Size(449, 262);
+            this.Screen.TabIndex = 0;
             // 
-            // student
+            // Ground
             // 
-            this.student.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.student.Location = new System.Drawing.Point(209, 224);
-            this.student.Name = "student";
-            this.student.Size = new System.Drawing.Size(25, 25);
-            this.student.TabIndex = 2;
-            this.student.Paint += new System.Windows.Forms.PaintEventHandler(this.student_Paint);
+            this.Ground.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.Ground.Location = new System.Drawing.Point(0, 249);
+            this.Ground.Name = "Ground";
+            this.Ground.Size = new System.Drawing.Size(448, 12);
+            this.Ground.TabIndex = 1;
+            this.Ground.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
-            // graund
+            // Nakov
             // 
-            this.graund.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.graund.Location = new System.Drawing.Point(0, 249);
-            this.graund.Name = "graund";
-            this.graund.Size = new System.Drawing.Size(448, 12);
-            this.graund.TabIndex = 1;
-            this.graund.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            this.Nakov.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.Nakov.Location = new System.Drawing.Point(12, 224);
+            this.Nakov.Name = "Nakov";
+            this.Nakov.Size = new System.Drawing.Size(25, 25);
+            this.Nakov.TabIndex = 0;
+            this.Nakov.TabStop = false;
             // 
-            // nakov
+            // PlayerMovement
             // 
-            this.nakov.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.nakov.Location = new System.Drawing.Point(12, 224);
-            this.nakov.Name = "nakov";
-            this.nakov.Size = new System.Drawing.Size(25, 25);
-            this.nakov.TabIndex = 0;
-            this.nakov.TabStop = false;
-            this.nakov.Click += new System.EventHandler(this.nakov_Click);
+            this.PlayerMovement.Enabled = true;
+            this.PlayerMovement.Interval = 23;
+            this.PlayerMovement.Tick += new System.EventHandler(this.PlayerMovement_Tick);
             // 
-            // timer1
+            // ObstaclesCreation
             // 
-            this.timer1.Enabled = true;
-            this.timer1.Interval = 1;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            this.ObstaclesCreation.Enabled = true;
+            this.ObstaclesCreation.Interval = 7000;
+            this.ObstaclesCreation.Tick += new System.EventHandler(this.ObstaclesCreation_Tick);
             // 
-            // timer2
+            // ObstaclesMovement
             // 
-            this.timer2.Enabled = true;
-            this.timer2.Interval = 1;
-            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
-            // 
-            // bigObject
-            // 
-            this.bigObject.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.bigObject.Location = new System.Drawing.Point(411, 200);
-            this.bigObject.Name = "bigObject";
-            this.bigObject.Size = new System.Drawing.Size(25, 50);
-            this.bigObject.TabIndex = 3;
-            this.bigObject.Paint += new System.Windows.Forms.PaintEventHandler(this.bigObject_Paint);
-            // 
-            // timer3
-            // 
-            this.timer3.Enabled = true;
-            this.timer3.Interval = 1;
-            this.timer3.Tick += new System.EventHandler(this.timer3_Tick);
+            this.ObstaclesMovement.Enabled = true;
+            this.ObstaclesMovement.Interval = 40;
+            this.ObstaclesMovement.Tick += new System.EventHandler(this.ObstaclesMovement_Tick);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(448, 262);
-            this.Controls.Add(this.screen);
+            this.ClientSize = new System.Drawing.Size(449, 262);
+            this.Controls.Add(this.Screen);
             this.Name = "Form1";
             this.Text = "WhereIsMyBeer";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
-            this.screen.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.nakov)).EndInit();
+            this.Screen.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.Nakov)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel screen;
-        private System.Windows.Forms.PictureBox nakov;
-        private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.Panel graund;
-        private System.Windows.Forms.Panel student;
-        private System.Windows.Forms.Timer timer2;
-        private System.Windows.Forms.Panel bigObject;
-        private System.Windows.Forms.Timer timer3;
+        private System.Windows.Forms.Panel Screen;
+        private System.Windows.Forms.PictureBox Nakov;
+        private System.Windows.Forms.Timer PlayerMovement;
+        private System.Windows.Forms.Panel Ground;
+        private System.Windows.Forms.Timer ObstaclesCreation;
+        private System.Windows.Forms.Timer ObstaclesMovement;
     }
 }
 
