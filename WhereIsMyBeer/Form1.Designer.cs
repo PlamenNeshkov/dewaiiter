@@ -30,28 +30,47 @@
         {
             this.components = new System.ComponentModel.Container();
             this.Screen = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.Ground = new System.Windows.Forms.Panel();
             this.Nakov = new System.Windows.Forms.PictureBox();
             this.PlayerMovement = new System.Windows.Forms.Timer(this.components);
             this.ObstaclesCreation = new System.Windows.Forms.Timer(this.components);
             this.ObstaclesMovement = new System.Windows.Forms.Timer(this.components);
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.label1 = new System.Windows.Forms.Label();
             this.Screen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Nakov)).BeginInit();
             this.SuspendLayout();
             // 
             // Screen
             // 
+            this.Screen.Controls.Add(this.Nakov);
             this.Screen.Controls.Add(this.label1);
             this.Screen.Controls.Add(this.progressBar1);
             this.Screen.Controls.Add(this.Ground);
-            this.Screen.Controls.Add(this.Nakov);
             this.Screen.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Screen.Location = new System.Drawing.Point(0, 0);
             this.Screen.Name = "Screen";
             this.Screen.Size = new System.Drawing.Size(449, 262);
             this.Screen.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(140, 6);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(163, 16);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Beer-o-meter";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label1.UseMnemonic = false;
+            this.label1.UseWaitCursor = true;
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(140, 25);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(163, 23);
+            this.progressBar1.TabIndex = 2;
             // 
             // Ground
             // 
@@ -65,7 +84,7 @@
             // Nakov
             // 
             this.Nakov.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.Nakov.Location = new System.Drawing.Point(12, 224);
+            this.Nakov.Location = new System.Drawing.Point(15, 225);
             this.Nakov.Name = "Nakov";
             this.Nakov.Size = new System.Drawing.Size(25, 25);
             this.Nakov.TabIndex = 0;
@@ -88,25 +107,6 @@
             this.ObstaclesMovement.Enabled = true;
             this.ObstaclesMovement.Interval = 40;
             this.ObstaclesMovement.Tick += new System.EventHandler(this.ObstaclesMovement_Tick);
-            // 
-            // progressBar1
-            // 
-            this.progressBar1.Location = new System.Drawing.Point(140, 25);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(163, 23);
-            this.progressBar1.TabIndex = 2;
-            // 
-            // label1
-            // 
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(140, 6);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(163, 16);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Beer-o-meter";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label1.UseMnemonic = false;
-            this.label1.UseWaitCursor = true;
             // 
             // Form1
             // 

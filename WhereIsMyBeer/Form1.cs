@@ -66,14 +66,6 @@ namespace WhereIsMyBeer
             {
                 Nakov.Top += 1;
             }
-            if (Nakov.Location.X == obstacle.Location.X && Nakov.Location.Y >= obstacle.Location.Y)
-            {
-                progressBar1.Value -= 5;
-                if (progressBar1.Value == progressBar1.Minimum)
-                {
-                    Close();
-                }
-            }
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -102,7 +94,6 @@ namespace WhereIsMyBeer
             obstacles[indexObstacles].Left = 450;
             Screen.Controls.Add(obstacles[indexObstacles]);
             indexObstacles++;
-           
         }
 
         private void ObstaclesMovement_Tick(object sender, EventArgs e)
@@ -111,7 +102,16 @@ namespace WhereIsMyBeer
             for (int j = 0; j < obstacles.Count; j++)
             {
                 obstacles[j].Left -= 5;
+                if (Nakov.Location.X == obstacles[j].Location.X && Nakov.Location.Y + Nakov.Height >= obstacles[j].Location.Y)
+                {
+                    progressBar1.Value -= 5;
+                    if (progressBar1.Value == progressBar1.Minimum)
+                    {
+                        Close();
+                    }
+                }
             }
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
