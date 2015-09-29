@@ -65,5 +65,34 @@ namespace WhereIsMyBeer
         {
 
         }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            student.Left -= 2;
+            if (student.Left < 0)
+            {
+                student.Left = screen.Right;
+            }
+        }
+
+        private void student_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+
+        private void bigObject_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void timer3_Tick(object sender, EventArgs e)
+        {
+            bigObject.Left -= 2;
+            if (bigObject.Left < 0)
+            {
+                bigObject.Left = screen.Right;
+            }
+        }
     }
 }
