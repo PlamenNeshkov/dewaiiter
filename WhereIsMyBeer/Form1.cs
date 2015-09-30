@@ -102,9 +102,10 @@ namespace WhereIsMyBeer
             for (int j = 0; j < obstacles.Count; j++)
             {
                 obstacles[j].Left -= 5;
-                if (Nakov.Location.X == obstacles[j].Location.X && Nakov.Location.Y + Nakov.Height >= obstacles[j].Location.Y)
+                if (Nakov.Location.X + Nakov.Width - 5 >= obstacles[j].Location.X && Nakov.Location.X <= obstacles[j].Location.X + obstacles[j].Width && Nakov.Location.Y + Nakov.Height >= obstacles[j].Location.Y)
                 {
                     progressBar1.Value -= 5;
+                    obstacles[j].Left = 450;
                     if (progressBar1.Value == progressBar1.Minimum)
                     {
                         Close();

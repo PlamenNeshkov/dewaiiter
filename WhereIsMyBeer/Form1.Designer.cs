@@ -30,10 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             this.Screen = new System.Windows.Forms.Panel();
+            this.Nakov = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.Ground = new System.Windows.Forms.Panel();
-            this.Nakov = new System.Windows.Forms.PictureBox();
             this.PlayerMovement = new System.Windows.Forms.Timer(this.components);
             this.ObstaclesCreation = new System.Windows.Forms.Timer(this.components);
             this.ObstaclesMovement = new System.Windows.Forms.Timer(this.components);
@@ -52,6 +52,15 @@
             this.Screen.Name = "Screen";
             this.Screen.Size = new System.Drawing.Size(449, 262);
             this.Screen.TabIndex = 0;
+            // 
+            // Nakov
+            // 
+            this.Nakov.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.Nakov.Location = new System.Drawing.Point(15, 225);
+            this.Nakov.Name = "Nakov";
+            this.Nakov.Size = new System.Drawing.Size(25, 25);
+            this.Nakov.TabIndex = 0;
+            this.Nakov.TabStop = false;
             // 
             // label1
             // 
@@ -80,15 +89,6 @@
             this.Ground.Size = new System.Drawing.Size(448, 12);
             this.Ground.TabIndex = 1;
             this.Ground.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
-            // 
-            // Nakov
-            // 
-            this.Nakov.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.Nakov.Location = new System.Drawing.Point(15, 225);
-            this.Nakov.Name = "Nakov";
-            this.Nakov.Size = new System.Drawing.Size(25, 25);
-            this.Nakov.TabIndex = 0;
-            this.Nakov.TabStop = false;
             // 
             // PlayerMovement
             // 
