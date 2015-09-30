@@ -32,7 +32,7 @@
             this.Screen = new System.Windows.Forms.Panel();
             this.Nakov = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.Beer_O_Meter = new System.Windows.Forms.ProgressBar();
             this.Ground = new System.Windows.Forms.Panel();
             this.PlayerMovement = new System.Windows.Forms.Timer(this.components);
             this.ObstaclesCreation = new System.Windows.Forms.Timer(this.components);
@@ -45,7 +45,7 @@
             // 
             this.Screen.Controls.Add(this.Nakov);
             this.Screen.Controls.Add(this.label1);
-            this.Screen.Controls.Add(this.progressBar1);
+            this.Screen.Controls.Add(this.Beer_O_Meter);
             this.Screen.Controls.Add(this.Ground);
             this.Screen.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Screen.Location = new System.Drawing.Point(0, 0);
@@ -74,12 +74,12 @@
             this.label1.UseMnemonic = false;
             this.label1.UseWaitCursor = true;
             // 
-            // progressBar1
+            // Beer_O_Meter
             // 
-            this.progressBar1.Location = new System.Drawing.Point(140, 25);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(163, 23);
-            this.progressBar1.TabIndex = 2;
+            this.Beer_O_Meter.Location = new System.Drawing.Point(140, 25);
+            this.Beer_O_Meter.Name = "Beer_O_Meter";
+            this.Beer_O_Meter.Size = new System.Drawing.Size(163, 23);
+            this.Beer_O_Meter.TabIndex = 2;
             // 
             // Ground
             // 
@@ -133,7 +133,7 @@
         private System.Windows.Forms.Timer ObstaclesCreation;
         private System.Windows.Forms.Timer ObstaclesMovement;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.ProgressBar Beer_O_Meter;
     }
 }
 
