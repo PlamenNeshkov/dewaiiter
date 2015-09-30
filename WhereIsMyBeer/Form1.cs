@@ -26,7 +26,6 @@ namespace WhereIsMyBeer
         public Form1()
         {
             InitializeComponent();
-            Beer_O_Meter.Minimum = 0;
             Beer_O_Meter.Maximum = 100;
             Beer_O_Meter.Value = 50;
         }
@@ -43,6 +42,7 @@ namespace WhereIsMyBeer
                 {
                     jump = true;
                     force = g + 5;
+                    Beer_O_Meter.Value -= 1;
                 }
             }
         }
@@ -93,31 +93,34 @@ namespace WhereIsMyBeer
             obstacles[indexObstacles].Top = 249 - obstacles[indexObstacles].Height;
             obstacles[indexObstacles].Left = 450;
             Screen.Controls.Add(obstacles[indexObstacles]);
-            ObstaclesCreation.Interval = randomInterval.Next(2000, 8000);
+            ObstaclesCreation.Interval = randomInterval.Next(1000, 5000);
             indexObstacles++;
         }
 
         private void ObstaclesMovement_Tick(object sender, EventArgs e)
         {
-            //Moves every obstacles towards the player
             for (int j = 0; j < obstacles.Count; j++)
             {
-                obstacles[j].Left -= 5;
-                if (Nakov.Location.X + Nakov.Width - 5 >= obstacles[j].Location.X && Nakov.Location.X <= obstacles[j].Location.X + obstacles[j].Width && Nakov.Location.Y + Nakov.Height >= obstacles[j].Location.Y)
+                if (Beer_O_Meter.Value > 0)
                 {
-                    Beer_O_Meter.Value -= 5;
-                    Screen.Controls.Remove(obstacles[j]);
-                    obstacles.RemoveAt(j);
-                    indexObstacles--;
-                    j--;
-                    if (Beer_O_Meter.Value == Beer_O_Meter.Minimum)
+                    obstacles[j].Left -= 5;
+                    if (Nakov.Location.X + Nakov.Width - 5 >= obstacles[j].Location.X && Nakov.Location.X <= obstacles[j].Location.X + obstacles[j].Width && Nakov.Location.Y + Nakov.Height >= obstacles[j].Location.Y)
                     {
-                        Close();
+                        Beer_O_Meter.Value -= 5;
+                        Screen.Controls.Remove(obstacles[j]);
+                        obstacles.RemoveAt(j);
+                        indexObstacles--;
+                        j--;
+                        if (Beer_O_Meter.Value == Beer_O_Meter.Minimum)
+                        {
+                            Hide();
+                            Form2 form2 = new Form2();
+                            form2.ShowDialog();
+                            Dispose();
+                        }
                     }
                 }
             }
-
-
         }
 
         private void Form1_Load(object sender, EventArgs e)
