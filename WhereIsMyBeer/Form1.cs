@@ -43,6 +43,14 @@ namespace WhereIsMyBeer
                     jump = true;
                     force = g + 5;
                     Beer_O_Meter.Value -= 1;
+                    if (Beer_O_Meter.Value == 0)
+                    {
+                        Beer_O_Meter.Value = 0;
+                        Hide();
+                        Form2 form2 = new Form2();
+                        form2.ShowDialog();
+                        Dispose();
+                    }
                 }
             }
         }
@@ -87,9 +95,9 @@ namespace WhereIsMyBeer
 
             obstacles[indexObstacles].BackColor = Color.Red;
 
-            obstacles[indexObstacles].Height = randomSize.Next(10,50);
+            obstacles[indexObstacles].Height = randomSize.Next(10, 50);
 
-            obstacles[indexObstacles].Width = randomSize.Next(10,50);
+            obstacles[indexObstacles].Width = randomSize.Next(10, 50);
             obstacles[indexObstacles].Top = 249 - obstacles[indexObstacles].Height;
             obstacles[indexObstacles].Left = 450;
             Screen.Controls.Add(obstacles[indexObstacles]);
@@ -106,13 +114,17 @@ namespace WhereIsMyBeer
                     obstacles[j].Left -= 5;
                     if (Nakov.Location.X + Nakov.Width - 5 >= obstacles[j].Location.X && Nakov.Location.X <= obstacles[j].Location.X + obstacles[j].Width && Nakov.Location.Y + Nakov.Height >= obstacles[j].Location.Y)
                     {
-                        Beer_O_Meter.Value -= 5;
                         Screen.Controls.Remove(obstacles[j]);
                         obstacles.RemoveAt(j);
                         indexObstacles--;
                         j--;
-                        if (Beer_O_Meter.Value == Beer_O_Meter.Minimum)
+                        if (Beer_O_Meter.Value > 5)
                         {
+                            Beer_O_Meter.Value -= 5;
+                        }
+                        else
+                        {
+                            Beer_O_Meter.Value = 0;
                             Hide();
                             Form2 form2 = new Form2();
                             form2.ShowDialog();
