@@ -13,7 +13,7 @@ namespace WhereIsMyBeer
     public partial class Form1 : Form
     {
         bool jump;
-        int g = 20;
+        int g = 25;
         int force;
         int indexObstacles = 0;
         int indexColdBeers = 0;
@@ -25,7 +25,11 @@ namespace WhereIsMyBeer
         List<PictureBox> obstacles = new List<PictureBox>();
         PictureBox coldBeer = new PictureBox();
         List<PictureBox> coldBeers = new List<PictureBox>();
+
         private int nakovAnim = 1;
+
+        PictureBox life = new PictureBox();
+        Stack<PictureBox> lives = new Stack<PictureBox>();
 
         public Form1()
         {
@@ -91,6 +95,8 @@ namespace WhereIsMyBeer
             //Creates a random sized obstacle at ground level outside the visible part of the screen
 
             obstacle = new PictureBox();
+            obstacle.BackgroundImage = WhereIsMyBeer.Properties.Resources.barrel;
+            obstacle.BackgroundImageLayout = ImageLayout.Stretch;
             obstacles.Add(obstacle);
 
             randomInterval = new Random();
@@ -107,7 +113,6 @@ namespace WhereIsMyBeer
             Screen.Controls.Add(obstacles[indexObstacles]);
             ObstaclesCreation.Interval = randomInterval.Next(1000, 5000);
             indexObstacles++;
-
         }
 
         private void ObstaclesMovement_Tick(object sender, EventArgs e)
@@ -123,18 +128,26 @@ namespace WhereIsMyBeer
                         obstacles.RemoveAt(j);
                         indexObstacles--;
                         j--;
-                        if (Beer_O_Meter.Value > 5)
+                        Screen.Controls.Remove(lives.Pop());
+                        if (lives.Count == 0)
                         {
-                            Beer_O_Meter.Value -= 5;
-                        }
-                        else
-                        {
-                            Beer_O_Meter.Value = 0;
                             Hide();
                             Form2 form2 = new Form2();
                             form2.ShowDialog();
                             Dispose();
                         }
+                        //if (Beer_O_Meter.Value > 5)
+                        //{
+                        //    Beer_O_Meter.Value -= 5;
+                        //}
+                        //else
+                        //{
+                        //    Beer_O_Meter.Value = 0;
+                        //    Hide();
+                        //    Form2 form2 = new Form2();
+                        //    form2.ShowDialog();
+                        //    Dispose();
+                        //}
                     }
                 }
             }
@@ -142,9 +155,26 @@ namespace WhereIsMyBeer
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            //Create lives' pictureboxes
+            life = new PictureBox();
+            for (int i = 0; i < 3; i++)
+            {
+                life = new PictureBox();
+                life.BackgroundImage = WhereIsMyBeer.Properties.Resources.liver;
+                life.BackgroundImageLayout = ImageLayout.Stretch;
+                life.Height = 16;
+                life.Width = 32;
+                life.Top = 20;
+                life.Left = 10 + (i * 32);
+                lives.Push(life);
+                Screen.Controls.Add(lives.Peek());
+            }  
 
             //Creates the initial obstacle
             obstacle = new PictureBox();
+            obstacle.BackgroundImage = WhereIsMyBeer.Properties.Resources.barrel;
+            obstacle.BackgroundImageLayout = ImageLayout.Stretch;
+
             obstacles.Add(obstacle);
 
             randomInterval = new Random();
@@ -152,11 +182,12 @@ namespace WhereIsMyBeer
             randomSize = new Random();
 
             obstacles[indexObstacles].BackColor = Color.Red;
-            obstacles[indexObstacles].Height = randomSize.Next(10, 35);
+            obstacles[indexObstacles].Height = randomSize.Next(10, 40);
             randomSize = new Random();
-            obstacles[indexObstacles].Width = randomSize.Next(10, 35);
+            obstacles[indexObstacles].Width = randomSize.Next(10, 40);
             obstacles[indexObstacles].Top = 429 - obstacles[indexObstacles].Height;
-            obstacles[indexObstacles].Left = 700;
+            obstacles[indexObstacles].Left = 650;
+
             Screen.Controls.Add(obstacles[indexObstacles]);
             indexObstacles++;
 
@@ -172,7 +203,7 @@ namespace WhereIsMyBeer
             randomSize = new Random();
             coldBeers[indexColdBeers].Width = 10;
             coldBeers[indexColdBeers].Top = 429 - coldBeers[indexColdBeers].Height;
-            coldBeers[indexColdBeers].Left = 700;
+            coldBeers[indexColdBeers].Left = 650;
             Screen.Controls.Add(coldBeers[indexColdBeers]);
             indexColdBeers++;
         }
