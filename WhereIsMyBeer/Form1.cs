@@ -25,7 +25,7 @@ namespace WhereIsMyBeer
         List<PictureBox> obstacles = new List<PictureBox>();
         PictureBox coldBeer = new PictureBox();
         List<PictureBox> coldBeers = new List<PictureBox>();
-        
+        private int nakovAnim = 1;
 
         public Form1()
         {
@@ -64,20 +64,21 @@ namespace WhereIsMyBeer
             //Falling after jump
             if (jump == true)
             {
-                Nakov.Top -= force;
+                NakovCharacter.Top -= force;
                 force -= 2;
             }
             //Stops fall if player hits ground
             //else keeps player falling
-            if (Nakov.Top + Nakov.Height + Ground.Height >= Screen.Height)
+            if (NakovCharacter.Top + NakovCharacter.Height + Ground.Height >= Screen.Height)
             {
-                Nakov.Top = Screen.Height - Nakov.Height - Ground.Height;
+                NakovCharacter.Top = Screen.Height - NakovCharacter.Height - Ground.Height;
                 jump = false;
             }
             else
             {
-                Nakov.Top += 1;
+                NakovCharacter.Top += 1;
             }
+
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -101,8 +102,8 @@ namespace WhereIsMyBeer
             obstacles[indexObstacles].Height = randomSize.Next(10, 40);
 
             obstacles[indexObstacles].Width = randomSize.Next(10, 40);
-            obstacles[indexObstacles].Top = 249 - obstacles[indexObstacles].Height;
-            obstacles[indexObstacles].Left = 450;
+            obstacles[indexObstacles].Top = 429 - obstacles[indexObstacles].Height;
+            obstacles[indexObstacles].Left = 700;
             Screen.Controls.Add(obstacles[indexObstacles]);
             ObstaclesCreation.Interval = randomInterval.Next(1000, 5000);
             indexObstacles++;
@@ -116,7 +117,7 @@ namespace WhereIsMyBeer
                 if (Beer_O_Meter.Value > 0)
                 {
                     obstacles[j].Left -= 5;
-                    if (Nakov.Location.X + Nakov.Width - 5 >= obstacles[j].Location.X && Nakov.Location.X <= obstacles[j].Location.X + obstacles[j].Width && Nakov.Location.Y + Nakov.Height >= obstacles[j].Location.Y)
+                    if (NakovCharacter.Location.X + NakovCharacter.Width - 5 >= obstacles[j].Location.X && NakovCharacter.Location.X <= obstacles[j].Location.X + obstacles[j].Width && NakovCharacter.Location.Y + NakovCharacter.Height >= obstacles[j].Location.Y)
                     {
                         Screen.Controls.Remove(obstacles[j]);
                         obstacles.RemoveAt(j);
@@ -141,6 +142,7 @@ namespace WhereIsMyBeer
 
         private void Form1_Load(object sender, EventArgs e)
         {
+
             //Creates the initial obstacle
             obstacle = new PictureBox();
             obstacles.Add(obstacle);
@@ -153,8 +155,8 @@ namespace WhereIsMyBeer
             obstacles[indexObstacles].Height = randomSize.Next(10, 35);
             randomSize = new Random();
             obstacles[indexObstacles].Width = randomSize.Next(10, 35);
-            obstacles[indexObstacles].Top = 249 - obstacles[indexObstacles].Height;
-            obstacles[indexObstacles].Left = 450;
+            obstacles[indexObstacles].Top = 429 - obstacles[indexObstacles].Height;
+            obstacles[indexObstacles].Left = 700;
             Screen.Controls.Add(obstacles[indexObstacles]);
             indexObstacles++;
 
@@ -169,8 +171,8 @@ namespace WhereIsMyBeer
             coldBeers[indexColdBeers].Height = 20;
             randomSize = new Random();
             coldBeers[indexColdBeers].Width = 10;
-            coldBeers[indexColdBeers].Top = 249 - coldBeers[indexColdBeers].Height;
-            coldBeers[indexColdBeers].Left = 450;
+            coldBeers[indexColdBeers].Top = 429 - coldBeers[indexColdBeers].Height;
+            coldBeers[indexColdBeers].Left = 700;
             Screen.Controls.Add(coldBeers[indexColdBeers]);
             indexColdBeers++;
         }
@@ -191,8 +193,8 @@ namespace WhereIsMyBeer
             coldBeers[indexColdBeers].BackColor = Color.Green;
             coldBeers[indexColdBeers].Height = 20;
             coldBeers[indexColdBeers].Width = 10;
-            coldBeers[indexColdBeers].Top = 249 - coldBeers[indexColdBeers].Height;
-            coldBeers[indexColdBeers].Left = 450;
+            coldBeers[indexColdBeers].Top = 429 - coldBeers[indexColdBeers].Height;
+            coldBeers[indexColdBeers].Left = 700;
             Screen.Controls.Add(coldBeers[indexColdBeers]);
             ColdBeersCreation.Interval = randomInterval.Next(1000, 5000);
             indexColdBeers++;
@@ -204,7 +206,7 @@ namespace WhereIsMyBeer
             for (int j = 0; j < coldBeers.Count; j++)
             {
                 coldBeers[j].Left -= 5;
-                if (Nakov.Location.X + Nakov.Width - 5 >= coldBeers[j].Location.X && Nakov.Location.X <= coldBeers[j].Location.X + coldBeers[j].Width && Nakov.Location.Y + Nakov.Height >= coldBeers[j].Location.Y)
+                if (NakovCharacter.Location.X + NakovCharacter.Width - 5 >= coldBeers[j].Location.X && NakovCharacter.Location.X <= coldBeers[j].Location.X + coldBeers[j].Width && NakovCharacter.Location.Y + NakovCharacter.Height >= coldBeers[j].Location.Y)
                 {
                     Screen.Controls.Remove(coldBeers[j]);
                     coldBeers.RemoveAt(j);
@@ -225,6 +227,35 @@ namespace WhereIsMyBeer
         private void label3_Click(object sender, EventArgs e)
         {
             label3.Text = score.ToString();
+        }
+
+        private void WalkAnimation_Tick(object sender, EventArgs e)
+        {
+            switch (nakovAnim)
+            {
+                case 1:
+                    NakovCharacter.Image = WhereIsMyBeer.Properties.Resources.Nakov1;
+                    break;
+                case 2:
+                    NakovCharacter.Image = WhereIsMyBeer.Properties.Resources.Nakov2;
+                    break;
+                case 3:
+                    NakovCharacter.Image = WhereIsMyBeer.Properties.Resources.Nakov3;
+                    break;
+                case 4:
+                    NakovCharacter.Image = WhereIsMyBeer.Properties.Resources.Nakov4;
+                    break;
+                default:
+                    break;
+            }
+            if (nakovAnim == 4)
+            {
+                nakovAnim = 1;
+            }
+            else
+            {
+                nakovAnim++;
+            }
         }
     }
 }
