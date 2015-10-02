@@ -37,12 +37,18 @@
             this.PlayerMovement = new System.Windows.Forms.Timer(this.components);
             this.ObstaclesCreation = new System.Windows.Forms.Timer(this.components);
             this.ObstaclesMovement = new System.Windows.Forms.Timer(this.components);
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.ColdBeersCreation = new System.Windows.Forms.Timer(this.components);
+            this.ColdBeersMovement = new System.Windows.Forms.Timer(this.components);
             this.Screen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Nakov)).BeginInit();
             this.SuspendLayout();
             // 
             // Screen
             // 
+            this.Screen.Controls.Add(this.label3);
+            this.Screen.Controls.Add(this.label2);
             this.Screen.Controls.Add(this.Nakov);
             this.Screen.Controls.Add(this.label1);
             this.Screen.Controls.Add(this.Beer_O_Meter);
@@ -108,6 +114,39 @@
             this.ObstaclesMovement.Interval = 40;
             this.ObstaclesMovement.Tick += new System.EventHandler(this.ObstaclesMovement_Tick);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.Location = new System.Drawing.Point(330, 6);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(47, 16);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Score:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.Location = new System.Drawing.Point(383, 6);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(15, 16);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "0";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
+            // 
+            // ColdBeersCreation
+            // 
+            this.ColdBeersCreation.Enabled = true;
+            this.ColdBeersCreation.Interval = 7000;
+            this.ColdBeersCreation.Tick += new System.EventHandler(this.ColdBeersCreation_Tick);
+            // 
+            // ColdBeersMovement
+            // 
+            this.ColdBeersMovement.Enabled = true;
+            this.ColdBeersMovement.Interval = 40;
+            this.ColdBeersMovement.Tick += new System.EventHandler(this.ColdBeersMovement_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -122,6 +161,7 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.Screen.ResumeLayout(false);
+            this.Screen.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Nakov)).EndInit();
             this.ResumeLayout(false);
 
@@ -137,6 +177,10 @@
         private System.Windows.Forms.Timer ObstaclesMovement;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ProgressBar Beer_O_Meter;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Timer ColdBeersCreation;
+        private System.Windows.Forms.Timer ColdBeersMovement;
+        public System.Windows.Forms.Label label3;
     }
 }
 

@@ -16,12 +16,16 @@ namespace WhereIsMyBeer
         int g = 20;
         int force;
         int indexObstacles = 0;
+        int indexColdBeers = 0;
+        int score = 0;
         Random randomLocation = new Random();
         Random randomSize = new Random();
         Random randomInterval = new Random();
         PictureBox obstacle = new PictureBox();
         List<PictureBox> obstacles = new List<PictureBox>();
-
+        PictureBox coldBeer = new PictureBox();
+        List<PictureBox> coldBeers = new List<PictureBox>();
+        
 
         public Form1()
         {
@@ -84,7 +88,6 @@ namespace WhereIsMyBeer
         private void ObstaclesCreation_Tick(object sender, EventArgs e)
         {
             //Creates a random sized obstacle at ground level outside the visible part of the screen
-            //
 
             obstacle = new PictureBox();
             obstacles.Add(obstacle);
@@ -95,14 +98,15 @@ namespace WhereIsMyBeer
 
             obstacles[indexObstacles].BackColor = Color.Red;
 
-            obstacles[indexObstacles].Height = randomSize.Next(10, 50);
+            obstacles[indexObstacles].Height = randomSize.Next(10, 40);
 
-            obstacles[indexObstacles].Width = randomSize.Next(10, 50);
+            obstacles[indexObstacles].Width = randomSize.Next(10, 40);
             obstacles[indexObstacles].Top = 249 - obstacles[indexObstacles].Height;
             obstacles[indexObstacles].Left = 450;
             Screen.Controls.Add(obstacles[indexObstacles]);
             ObstaclesCreation.Interval = randomInterval.Next(1000, 5000);
             indexObstacles++;
+
         }
 
         private void ObstaclesMovement_Tick(object sender, EventArgs e)
@@ -153,6 +157,74 @@ namespace WhereIsMyBeer
             obstacles[indexObstacles].Left = 450;
             Screen.Controls.Add(obstacles[indexObstacles]);
             indexObstacles++;
+
+            //Creates the initial coldBeer
+            coldBeer = new PictureBox();
+            coldBeers.Add(coldBeer);
+
+            randomInterval = new Random();
+            randomLocation = new Random();
+            randomSize = new Random();
+            coldBeers[indexColdBeers].BackColor = Color.Green;
+            coldBeers[indexColdBeers].Height = 20;
+            randomSize = new Random();
+            coldBeers[indexColdBeers].Width = 10;
+            coldBeers[indexColdBeers].Top = 249 - coldBeers[indexColdBeers].Height;
+            coldBeers[indexColdBeers].Left = 450;
+            Screen.Controls.Add(coldBeers[indexColdBeers]);
+            indexColdBeers++;
+        }
+
+
+        private void ColdBeersCreation_Tick(object sender, EventArgs e)
+        {
+
+            // Creates a random sized cold beer at ground level outside the visible part of the screen
+
+            coldBeer = new PictureBox();
+            coldBeers.Add(coldBeer);
+
+            randomInterval = new Random();
+            randomLocation = new Random();
+            randomSize = new Random();
+
+            coldBeers[indexColdBeers].BackColor = Color.Green;
+            coldBeers[indexColdBeers].Height = 20;
+            coldBeers[indexColdBeers].Width = 10;
+            coldBeers[indexColdBeers].Top = 249 - coldBeers[indexColdBeers].Height;
+            coldBeers[indexColdBeers].Left = 450;
+            Screen.Controls.Add(coldBeers[indexColdBeers]);
+            ColdBeersCreation.Interval = randomInterval.Next(1000, 5000);
+            indexColdBeers++;
+
+        }
+
+        private void ColdBeersMovement_Tick(object sender, EventArgs e)
+        {
+            for (int j = 0; j < coldBeers.Count; j++)
+            {
+                coldBeers[j].Left -= 5;
+                if (Nakov.Location.X + Nakov.Width - 5 >= coldBeers[j].Location.X && Nakov.Location.X <= coldBeers[j].Location.X + coldBeers[j].Width && Nakov.Location.Y + Nakov.Height >= coldBeers[j].Location.Y)
+                {
+                    Screen.Controls.Remove(coldBeers[j]);
+                    coldBeers.RemoveAt(j);
+                    indexColdBeers--;
+                    score += 1;
+                    if (Beer_O_Meter.Value < 95)
+                    {
+                        Beer_O_Meter.Value += 5;
+                    }
+                    else
+                    {
+                        Beer_O_Meter.Value = 100;
+                    }
+                }
+            }
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+            label3.Text = score.ToString();
         }
     }
 }
