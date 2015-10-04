@@ -32,6 +32,7 @@
             this.Screen = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.NakovCharacter = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.Beer_O_Meter = new System.Windows.Forms.ProgressBar();
             this.Ground = new System.Windows.Forms.Panel();
@@ -41,8 +42,8 @@
             this.ColdBeersCreation = new System.Windows.Forms.Timer(this.components);
             this.ColdBeersMovement = new System.Windows.Forms.Timer(this.components);
             this.WalkAnimation = new System.Windows.Forms.Timer(this.components);
-            this.NakovCharacter = new System.Windows.Forms.PictureBox();
             this.Nakov = new System.Windows.Forms.PictureBox();
+            this.ScoreTimer = new System.Windows.Forms.Timer(this.components);
             this.Screen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NakovCharacter)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Nakov)).BeginInit();
@@ -82,6 +83,17 @@
             this.label2.Size = new System.Drawing.Size(47, 16);
             this.label2.TabIndex = 4;
             this.label2.Text = "Score:";
+            // 
+            // NakovCharacter
+            // 
+            this.NakovCharacter.BackColor = System.Drawing.Color.Transparent;
+            this.NakovCharacter.Image = global::WhereIsMyBeer.Properties.Resources.Nakov1;
+            this.NakovCharacter.ImageLocation = "";
+            this.NakovCharacter.Location = new System.Drawing.Point(15, 230);
+            this.NakovCharacter.Name = "NakovCharacter";
+            this.NakovCharacter.Size = new System.Drawing.Size(77, 200);
+            this.NakovCharacter.TabIndex = 0;
+            this.NakovCharacter.TabStop = false;
             // 
             // label1
             // 
@@ -147,17 +159,6 @@
             this.WalkAnimation.Interval = 300;
             this.WalkAnimation.Tick += new System.EventHandler(this.WalkAnimation_Tick);
             // 
-            // NakovCharacter
-            // 
-            this.NakovCharacter.BackColor = System.Drawing.Color.Transparent;
-            this.NakovCharacter.Image = global::WhereIsMyBeer.Properties.Resources.Nakov1;
-            this.NakovCharacter.ImageLocation = "";
-            this.NakovCharacter.Location = new System.Drawing.Point(15, 230);
-            this.NakovCharacter.Name = "NakovCharacter";
-            this.NakovCharacter.Size = new System.Drawing.Size(77, 200);
-            this.NakovCharacter.TabIndex = 0;
-            this.NakovCharacter.TabStop = false;
-            // 
             // Nakov
             // 
             this.Nakov.BackColor = System.Drawing.Color.Transparent;
@@ -168,6 +169,11 @@
             this.Nakov.Size = new System.Drawing.Size(77, 200);
             this.Nakov.TabIndex = 0;
             this.Nakov.TabStop = false;
+            // 
+            // ScoreTimer
+            // 
+            this.ScoreTimer.Enabled = true;
+            this.ScoreTimer.Tick += new System.EventHandler(this.ScoreTimer_Tick);
             // 
             // Form1
             // 
@@ -206,6 +212,7 @@
         public System.Windows.Forms.Label label3;
         private System.Windows.Forms.Timer WalkAnimation;
         private System.Windows.Forms.PictureBox Nakov;
+        private System.Windows.Forms.Timer ScoreTimer;
     }
 }
 

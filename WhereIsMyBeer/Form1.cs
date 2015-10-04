@@ -17,7 +17,7 @@ namespace WhereIsMyBeer
         int force;
         int indexObstacles = 0;
         int indexColdBeers = 0;
-        int score = 0;
+        public static int score = 0;
         Random randomLocation = new Random();
         Random randomSize = new Random();
         Random randomInterval = new Random();
@@ -34,8 +34,8 @@ namespace WhereIsMyBeer
         public Form1()
         {
             InitializeComponent();
-            Beer_O_Meter.Maximum = 100;
-            Beer_O_Meter.Value = 50;
+            Beer_O_Meter.Maximum = 110;
+            Beer_O_Meter.Value = 10;
         }
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
@@ -50,14 +50,20 @@ namespace WhereIsMyBeer
                 {
                     jump = true;
                     force = g + 5;
-                    Beer_O_Meter.Value -= 1;
+                    if (Beer_O_Meter.Value > 0)
+                    {
+                        Beer_O_Meter.Value -= 1;
+                    } 
                     if (Beer_O_Meter.Value == 0)
                     {
-                        Beer_O_Meter.Value = 0;
-                        Hide();
-                        Form2 form2 = new Form2();
-                        form2.ShowDialog();
-                        Dispose();
+                        Screen.Controls.Remove(lives.Pop());
+                        if (lives.Count == 0)
+                        {
+                            Hide();
+                            Form2 form2 = new Form2();
+                            form2.ShowDialog();
+                            Dispose();
+                        }
                     }
                 }
             }
@@ -119,7 +125,7 @@ namespace WhereIsMyBeer
         {
             for (int j = 0; j < obstacles.Count; j++)
             {
-                if (Beer_O_Meter.Value > 0)
+                if (lives.Count > 0)
                 {
                     obstacles[j].Left -= 5;
                     if (NakovCharacter.Location.X + NakovCharacter.Width - 5 >= obstacles[j].Location.X && NakovCharacter.Location.X <= obstacles[j].Location.X + obstacles[j].Width && NakovCharacter.Location.Y + NakovCharacter.Height >= obstacles[j].Location.Y)
@@ -136,18 +142,6 @@ namespace WhereIsMyBeer
                             form2.ShowDialog();
                             Dispose();
                         }
-                        //if (Beer_O_Meter.Value > 5)
-                        //{
-                        //    Beer_O_Meter.Value -= 5;
-                        //}
-                        //else
-                        //{
-                        //    Beer_O_Meter.Value = 0;
-                        //    Hide();
-                        //    Form2 form2 = new Form2();
-                        //    form2.ShowDialog();
-                        //    Dispose();
-                        //}
                     }
                 }
             }
@@ -168,7 +162,7 @@ namespace WhereIsMyBeer
                 life.Left = 10 + (i * 32);
                 lives.Push(life);
                 Screen.Controls.Add(lives.Peek());
-            }  
+            }
 
             //Creates the initial obstacle
             obstacle = new PictureBox();
@@ -236,20 +230,23 @@ namespace WhereIsMyBeer
         {
             for (int j = 0; j < coldBeers.Count; j++)
             {
-                coldBeers[j].Left -= 5;
-                if (NakovCharacter.Location.X + NakovCharacter.Width - 5 >= coldBeers[j].Location.X && NakovCharacter.Location.X <= coldBeers[j].Location.X + coldBeers[j].Width && NakovCharacter.Location.Y + NakovCharacter.Height >= coldBeers[j].Location.Y)
+                if (lives.Count > 0)
                 {
-                    Screen.Controls.Remove(coldBeers[j]);
-                    coldBeers.RemoveAt(j);
-                    indexColdBeers--;
-                    score += 1;
-                    if (Beer_O_Meter.Value < 95)
+                    coldBeers[j].Left -= 5;
+                    if (NakovCharacter.Location.X + NakovCharacter.Width - 5 >= coldBeers[j].Location.X && NakovCharacter.Location.X <= coldBeers[j].Location.X + coldBeers[j].Width && NakovCharacter.Location.Y + NakovCharacter.Height >= coldBeers[j].Location.Y)
                     {
-                        Beer_O_Meter.Value += 5;
-                    }
-                    else
-                    {
-                        Beer_O_Meter.Value = 100;
+                        Screen.Controls.Remove(coldBeers[j]);
+                        coldBeers.RemoveAt(j);
+                        indexColdBeers--;
+                        score += 1;
+                        if (Beer_O_Meter.Value < 95)
+                        {
+                            Beer_O_Meter.Value += 5;
+                        }
+                        else
+                        {
+                            Beer_O_Meter.Value = 100;
+                        }
                     }
                 }
             }
@@ -257,7 +254,7 @@ namespace WhereIsMyBeer
 
         private void label3_Click(object sender, EventArgs e)
         {
-            label3.Text = score.ToString();
+
         }
 
         private void WalkAnimation_Tick(object sender, EventArgs e)
@@ -287,6 +284,13 @@ namespace WhereIsMyBeer
             {
                 nakovAnim++;
             }
+        }
+
+        private void ScoreTimer_Tick(object sender, EventArgs e)
+        {
+            label3.Visible = false;
+            label3.Text = score.ToString();
+            label3.Visible = true;
         }
     }
 }
