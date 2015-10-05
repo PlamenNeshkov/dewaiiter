@@ -17,6 +17,7 @@ namespace WhereIsMyBeer
         int force;
         int indexObstacles = 0;
         int indexColdBeers = 0;
+        bool isHasSuperPower = false;
         public static int score = 0;
         Random randomLocation = new Random();
         Random randomSize = new Random();
@@ -35,7 +36,7 @@ namespace WhereIsMyBeer
         {
             InitializeComponent();
             Beer_O_Meter.Maximum = 110;
-            Beer_O_Meter.Value = 10;
+            Beer_O_Meter.Value = 105;
         }
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
@@ -134,7 +135,10 @@ namespace WhereIsMyBeer
                         obstacles.RemoveAt(j);
                         indexObstacles--;
                         j--;
-                        Screen.Controls.Remove(lives.Pop());
+                        if (isHasSuperPower == false)
+                        {
+                            Screen.Controls.Remove(lives.Pop());
+                        }
                         if (lives.Count == 0)
                         {
                             Hide();
@@ -226,7 +230,7 @@ namespace WhereIsMyBeer
 
         }
 
-        private void ColdBeersMovement_Tick(object sender, EventArgs e)
+        private async void ColdBeersMovement_Tick(object sender, EventArgs e)
         {
             for (int j = 0; j < coldBeers.Count; j++)
             {
@@ -239,13 +243,17 @@ namespace WhereIsMyBeer
                         coldBeers.RemoveAt(j);
                         indexColdBeers--;
                         score += 1;
-                        if (Beer_O_Meter.Value < 95)
+                        if (Beer_O_Meter.Value < 105)
                         {
                             Beer_O_Meter.Value += 5;
                         }
                         else
                         {
-                            Beer_O_Meter.Value = 100;
+                            score += 50;
+                            isHasSuperPower = true;
+                            Beer_O_Meter.Value = 5;
+                            await Task.Delay(10000);
+                            isHasSuperPower = false;
                         }
                     }
                 }

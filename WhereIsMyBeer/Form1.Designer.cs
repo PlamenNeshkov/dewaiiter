@@ -89,9 +89,10 @@
             this.NakovCharacter.BackColor = System.Drawing.Color.Transparent;
             this.NakovCharacter.Image = global::WhereIsMyBeer.Properties.Resources.Nakov1;
             this.NakovCharacter.ImageLocation = "";
-            this.NakovCharacter.Location = new System.Drawing.Point(15, 230);
+            this.NakovCharacter.Location = new System.Drawing.Point(12, 329);
             this.NakovCharacter.Name = "NakovCharacter";
-            this.NakovCharacter.Size = new System.Drawing.Size(77, 200);
+            this.NakovCharacter.Size = new System.Drawing.Size(38, 100);
+            this.NakovCharacter.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.NakovCharacter.TabIndex = 0;
             this.NakovCharacter.TabStop = false;
             // 
