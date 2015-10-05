@@ -36,7 +36,7 @@ namespace WhereIsMyBeer
         {
             InitializeComponent();
             Beer_O_Meter.Maximum = 110;
-            Beer_O_Meter.Value = 105;
+            Beer_O_Meter.Value = 5;
         }
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
@@ -158,12 +158,12 @@ namespace WhereIsMyBeer
             for (int i = 0; i < 3; i++)
             {
                 life = new PictureBox();
-                life.BackgroundImage = WhereIsMyBeer.Properties.Resources.liver;
+                life.BackgroundImage = WhereIsMyBeer.Properties.Resources.heart;
                 life.BackgroundImageLayout = ImageLayout.Stretch;
-                life.Height = 16;
-                life.Width = 32;
+                life.Height = 20;
+                life.Width = 30;
                 life.Top = 20;
-                life.Left = 10 + (i * 32);
+                life.Left = 10 + (i * 35);
                 lives.Push(life);
                 Screen.Controls.Add(lives.Peek());
             }
@@ -227,7 +227,6 @@ namespace WhereIsMyBeer
             Screen.Controls.Add(coldBeers[indexColdBeers]);
             ColdBeersCreation.Interval = randomInterval.Next(1000, 5000);
             indexColdBeers++;
-
         }
 
         private async void ColdBeersMovement_Tick(object sender, EventArgs e)
