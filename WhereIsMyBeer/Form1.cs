@@ -190,20 +190,23 @@ namespace WhereIsMyBeer
             indexObstacles++;
 
             //Creates the initial coldBeer
-            coldBeer = new PictureBox();
-            coldBeers.Add(coldBeer);
+            if (obstacle.Left < 630 || obstacle.Left > 680)
+            {
+                coldBeer = new PictureBox();
+                coldBeers.Add(coldBeer);
 
-            randomInterval = new Random();
-            randomLocation = new Random();
-            randomSize = new Random();
-            coldBeers[indexColdBeers].BackColor = Color.Green;
-            coldBeers[indexColdBeers].Height = 20;
-            randomSize = new Random();
-            coldBeers[indexColdBeers].Width = 10;
-            coldBeers[indexColdBeers].Top = 429 - coldBeers[indexColdBeers].Height;
-            coldBeers[indexColdBeers].Left = 650;
-            Screen.Controls.Add(coldBeers[indexColdBeers]);
-            indexColdBeers++;
+                randomInterval = new Random();
+                randomLocation = new Random();
+                randomSize = new Random();
+                coldBeers[indexColdBeers].BackColor = Color.Green;
+                coldBeers[indexColdBeers].Height = 20;
+                randomSize = new Random();
+                coldBeers[indexColdBeers].Width = 10;
+                coldBeers[indexColdBeers].Top = 429 - coldBeers[indexColdBeers].Height;
+                coldBeers[indexColdBeers].Left = 650;
+                Screen.Controls.Add(coldBeers[indexColdBeers]);
+                indexColdBeers++;
+            }
         }
 
 
@@ -223,7 +226,7 @@ namespace WhereIsMyBeer
             coldBeers[indexColdBeers].Height = 20;
             coldBeers[indexColdBeers].Width = 10;
             coldBeers[indexColdBeers].Top = 429 - coldBeers[indexColdBeers].Height;
-            coldBeers[indexColdBeers].Left = 700;
+            coldBeers[indexColdBeers].Left = 650;
             Screen.Controls.Add(coldBeers[indexColdBeers]);
             ColdBeersCreation.Interval = randomInterval.Next(1000, 5000);
             indexColdBeers++;
