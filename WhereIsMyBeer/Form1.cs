@@ -104,20 +104,23 @@ namespace WhereIsMyBeer
             obstacle = new PictureBox();
             obstacle.BackgroundImage = WhereIsMyBeer.Properties.Resources.barrel;
             obstacle.BackgroundImageLayout = ImageLayout.Stretch;
-            obstacles.Add(obstacle);
+           
 
             randomInterval = new Random();
             randomLocation = new Random();
             randomSize = new Random();
 
-            obstacles[indexObstacles].BackColor = Color.Red;
+            obstacle.BackColor = Color.Red;
 
-            obstacles[indexObstacles].Height = randomSize.Next(10, 40);
+            obstacle.Height = randomSize.Next(10, 40);
 
-            obstacles[indexObstacles].Width = randomSize.Next(10, 40);
-            obstacles[indexObstacles].Top = 429 - obstacles[indexObstacles].Height;
-            obstacles[indexObstacles].Left = 700;
+            obstacle.Width = randomSize.Next(10, 40);
+            obstacle.Top = 429 - obstacle.Height;
+            obstacle.Left = 700;
+
+            obstacles.Add(obstacle);
             Screen.Controls.Add(obstacles[indexObstacles]);
+
             ObstaclesCreation.Interval = randomInterval.Next(1000, 5000);
             indexObstacles++;
         }
@@ -147,6 +150,13 @@ namespace WhereIsMyBeer
                             Dispose();
                         }
                     }
+                    else if (obstacles[j].Left < -obstacles[j].Width)
+                    {
+                        Screen.Controls.Remove(obstacles[j]);
+                        obstacles.RemoveAt(j);
+                        indexObstacles--;
+                        j--;
+                    }
                 }
             }
         }
@@ -173,38 +183,40 @@ namespace WhereIsMyBeer
             obstacle.BackgroundImage = WhereIsMyBeer.Properties.Resources.barrel;
             obstacle.BackgroundImageLayout = ImageLayout.Stretch;
 
-            obstacles.Add(obstacle);
-
             randomInterval = new Random();
             randomLocation = new Random();
             randomSize = new Random();
 
-            obstacles[indexObstacles].BackColor = Color.Red;
-            obstacles[indexObstacles].Height = randomSize.Next(10, 40);
+            obstacle.BackColor = Color.Red;
+            obstacle.Height = randomSize.Next(10, 40);
             randomSize = new Random();
-            obstacles[indexObstacles].Width = randomSize.Next(10, 40);
-            obstacles[indexObstacles].Top = 429 - obstacles[indexObstacles].Height;
-            obstacles[indexObstacles].Left = 650;
+            obstacle.Width = randomSize.Next(10, 40);
+            obstacle.Top = 429 - obstacle.Height;
+            obstacle.Left = 650;
 
+            obstacles.Add(obstacle);
             Screen.Controls.Add(obstacles[indexObstacles]);
+
             indexObstacles++;
 
             //Creates the initial coldBeer
             if (obstacle.Left < 630 || obstacle.Left > 680)
             {
                 coldBeer = new PictureBox();
-                coldBeers.Add(coldBeer);
 
                 randomInterval = new Random();
                 randomLocation = new Random();
                 randomSize = new Random();
-                coldBeers[indexColdBeers].BackColor = Color.Green;
-                coldBeers[indexColdBeers].Height = 20;
+                coldBeer.BackColor = Color.Green;
+                coldBeer.Height = 20;
                 randomSize = new Random();
-                coldBeers[indexColdBeers].Width = 10;
-                coldBeers[indexColdBeers].Top = 429 - coldBeers[indexColdBeers].Height;
-                coldBeers[indexColdBeers].Left = 650;
+                coldBeer.Width = 10;
+                coldBeer.Top = 429 - coldBeer.Height;
+                coldBeer.Left = 650;
+
+                coldBeers.Add(coldBeer);
                 Screen.Controls.Add(coldBeers[indexColdBeers]);
+
                 indexColdBeers++;
             }
         }
@@ -216,18 +228,28 @@ namespace WhereIsMyBeer
             // Creates a random sized cold beer at ground level outside the visible part of the screen
 
             coldBeer = new PictureBox();
-            coldBeers.Add(coldBeer);
 
             randomInterval = new Random();
             randomLocation = new Random();
             randomSize = new Random();
 
-            coldBeers[indexColdBeers].BackColor = Color.Green;
-            coldBeers[indexColdBeers].Height = 20;
-            coldBeers[indexColdBeers].Width = 10;
-            coldBeers[indexColdBeers].Top = 429 - coldBeers[indexColdBeers].Height;
-            coldBeers[indexColdBeers].Left = 650;
-            Screen.Controls.Add(coldBeers[indexColdBeers]);
+            coldBeer.BackColor = Color.Green;
+            coldBeer.Height = 20;
+            coldBeer.Width = 10;
+            coldBeer.Top = 429 - coldBeer.Height;
+            coldBeer.Left = 650;
+            for (int i = 0; i < obstacles.Count; i++)
+            {
+                if(coldBeer.Left <= obstacles[i].Left + 70 && coldBeer.Left >= obstacles[i].Left - 70)
+                {
+                    coldBeer.Left = obstacles[i].Left + new Random().Next(71, 160);
+                }
+            }
+
+
+            coldBeers.Add(coldBeer);
+            Screen.Controls.Add(coldBeer);
+
             ColdBeersCreation.Interval = randomInterval.Next(1000, 5000);
             indexColdBeers++;
         }
@@ -257,6 +279,13 @@ namespace WhereIsMyBeer
                             await Task.Delay(10000);
                             isHasSuperPower = false;
                         }
+                    }
+                    else if (coldBeers[j].Left < -coldBeers[j].Width)
+                    {
+                        Screen.Controls.Remove(coldBeers[j]);
+                        coldBeers.RemoveAt(j);
+                        indexColdBeers--;
+                        j--;
                     }
                 }
             }
