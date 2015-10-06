@@ -73,6 +73,16 @@ namespace WhereIsMyBeer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Desk {
+            get {
+                object obj = ResourceManager.GetObject("Desk", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap heart {
             get {
                 object obj = ResourceManager.GetObject("heart", resourceCulture);
@@ -126,6 +136,16 @@ namespace WhereIsMyBeer.Properties {
         internal static System.Drawing.Bitmap Nakov4 {
             get {
                 object obj = ResourceManager.GetObject("Nakov4", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Student {
+            get {
+                object obj = ResourceManager.GetObject("Student", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

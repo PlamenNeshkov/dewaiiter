@@ -102,7 +102,25 @@ namespace WhereIsMyBeer
             //Creates a random sized obstacle at ground level outside the visible part of the screen
 
             obstacle = new PictureBox();
-            obstacle.BackgroundImage = WhereIsMyBeer.Properties.Resources.barrel;
+            Random obstaclesPicture = new Random();
+            int obstaclesPictureNumber = obstaclesPicture.Next(1, 3);
+            switch (obstaclesPictureNumber)
+            {
+                case 1:
+                    obstacle.BackgroundImage = WhereIsMyBeer.Properties.Resources.Student;
+                    obstacle.Height = 50;
+                    randomSize = new Random();
+                    obstacle.Width = 50;
+                    break;
+                case 2:
+                    obstacle.BackgroundImage = WhereIsMyBeer.Properties.Resources.Desk;
+                    obstacle.Height = 40;
+                    randomSize = new Random();
+                    obstacle.Width = 40;
+                    break;
+                default:
+                    break;
+            }
             obstacle.BackgroundImageLayout = ImageLayout.Stretch;
            
 
@@ -110,8 +128,6 @@ namespace WhereIsMyBeer
             randomLocation = new Random();
             randomSize = new Random();
 
-            obstacle.Height = randomSize.Next(10, 40);
-            obstacle.Width = randomSize.Next(10, 40);
             obstacle.Top = 429 - obstacle.Height;
             obstacle.Left = 700;
 
@@ -177,16 +193,32 @@ namespace WhereIsMyBeer
 
             //Creates the initial obstacle
             obstacle = new PictureBox();
-            obstacle.BackgroundImage = WhereIsMyBeer.Properties.Resources.barrel;
+            Random obstaclesPicture = new Random();
+            int obstaclesPictureNumber = obstaclesPicture.Next(1, 3);
+            switch (obstaclesPictureNumber)
+            {
+                case 1:
+                    obstacle.BackgroundImage = WhereIsMyBeer.Properties.Resources.Student;
+                    obstacle.Height = 50;
+                    randomSize = new Random();
+                    obstacle.Width = 50;
+                    break;
+                case 2:
+                    obstacle.BackgroundImage = WhereIsMyBeer.Properties.Resources.Desk;
+                    obstacle.Height = 40;
+                    randomSize = new Random();
+                    obstacle.Width = 40;
+                    break;
+                default:
+                    break;
+            }
+
+            obstacle.BackgroundImage = WhereIsMyBeer.Properties.Resources.Student;
             obstacle.BackgroundImageLayout = ImageLayout.Stretch;
 
             randomInterval = new Random();
             randomLocation = new Random();
-            randomSize = new Random();
 
-            obstacle.Height = randomSize.Next(10, 40);
-            randomSize = new Random();
-            obstacle.Width = randomSize.Next(10, 40);
             obstacle.Top = 429 - obstacle.Height;
             obstacle.Left = 650;
 
@@ -205,7 +237,6 @@ namespace WhereIsMyBeer
                 randomSize = new Random();
                 coldBeer.BackColor = Color.Green;
                 coldBeer.Height = 20;
-                randomSize = new Random();
                 coldBeer.Width = 10;
                 coldBeer.Top = 429 - coldBeer.Height;
                 coldBeer.Left = 720;
