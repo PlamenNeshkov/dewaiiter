@@ -110,10 +110,7 @@ namespace WhereIsMyBeer
             randomLocation = new Random();
             randomSize = new Random();
 
-            obstacle.BackColor = Color.Red;
-
             obstacle.Height = randomSize.Next(10, 40);
-
             obstacle.Width = randomSize.Next(10, 40);
             obstacle.Top = 429 - obstacle.Height;
             obstacle.Left = 700;
@@ -187,7 +184,6 @@ namespace WhereIsMyBeer
             randomLocation = new Random();
             randomSize = new Random();
 
-            obstacle.BackColor = Color.Red;
             obstacle.Height = randomSize.Next(10, 40);
             randomSize = new Random();
             obstacle.Width = randomSize.Next(10, 40);
@@ -212,7 +208,7 @@ namespace WhereIsMyBeer
                 randomSize = new Random();
                 coldBeer.Width = 10;
                 coldBeer.Top = 429 - coldBeer.Height;
-                coldBeer.Left = 650;
+                coldBeer.Left = 720;
 
                 coldBeers.Add(coldBeer);
                 Screen.Controls.Add(coldBeers[indexColdBeers]);
@@ -240,7 +236,7 @@ namespace WhereIsMyBeer
             coldBeer.Left = 650;
             for (int i = 0; i < obstacles.Count; i++)
             {
-                if(coldBeer.Left <= obstacles[i].Left + 70 && coldBeer.Left >= obstacles[i].Left - 70)
+                while(coldBeer.Left <= obstacles[i].Left + 70 && coldBeer.Left >= obstacles[i].Left - 70)
                 {
                     coldBeer.Left = obstacles[i].Left + new Random().Next(71, 160);
                 }
