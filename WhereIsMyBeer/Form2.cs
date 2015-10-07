@@ -15,10 +15,10 @@ namespace WhereIsMyBeer
         public Form2()
         {
             InitializeComponent();
-            if (Form1.score < Form1.highscore)
+            if (Form1.score < Form1.highScore)
             {
                 FinalScore.Text = Form1.score.ToString();
-                label3.Text = Form1.highscore.ToString();
+                label3.Text = Form1.highScore.ToString();
                 label1.Left = 320 - (label1.Width / 2) - (FinalScore.Width / 2) - 10;
                 label2.Left = 320 - (label2.Width / 2) - (label3.Width / 2) - 10;
                 label3.Left = label2.Left + label2.Width + 10;
@@ -44,21 +44,6 @@ namespace WhereIsMyBeer
             Form1 form1 = new Form1();
             form1.ShowDialog();
             Dispose();
-        }
-
-        private void FinalScore_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

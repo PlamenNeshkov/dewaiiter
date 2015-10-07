@@ -67,7 +67,6 @@
             this.FinalScore.Size = new System.Drawing.Size(18, 20);
             this.FinalScore.TabIndex = 3;
             this.FinalScore.Text = "0";
-            this.FinalScore.Click += new System.EventHandler(this.FinalScore_Click);
             // 
             // label1
             // 
@@ -77,8 +76,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(146, 20);
             this.label1.TabIndex = 4;
-            this.label1.Text = "Your Final Score is ";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.label1.Text = "Your Final Score is: ";
             // 
             // label2
             // 
@@ -99,7 +97,6 @@
             this.label3.Size = new System.Drawing.Size(18, 20);
             this.label3.TabIndex = 6;
             this.label3.Text = "0";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // Form2
             // 

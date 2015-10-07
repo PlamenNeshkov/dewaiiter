@@ -31,7 +31,10 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.Screen = new System.Windows.Forms.Panel();
-            this.HighScoreLbl = new System.Windows.Forms.Label();
+            this.PauseScreen = new System.Windows.Forms.Panel();
+            this.InstructionsLbl = new System.Windows.Forms.Label();
+            this.PauseLbl = new System.Windows.Forms.Label();
+            this.highScoreLbl = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -48,13 +51,14 @@
             this.Nakov = new System.Windows.Forms.PictureBox();
             this.ScoreTimer = new System.Windows.Forms.Timer(this.components);
             this.Screen.SuspendLayout();
+            this.PauseScreen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NakovCharacter)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Nakov)).BeginInit();
             this.SuspendLayout();
             // 
             // Screen
             // 
-            this.Screen.Controls.Add(this.HighScoreLbl);
+            this.Screen.Controls.Add(this.highScoreLbl);
             this.Screen.Controls.Add(this.label4);
             this.Screen.Controls.Add(this.label3);
             this.Screen.Controls.Add(this.label2);
@@ -62,21 +66,59 @@
             this.Screen.Controls.Add(this.label1);
             this.Screen.Controls.Add(this.Beer_O_Meter);
             this.Screen.Controls.Add(this.Ground);
+            this.Screen.Controls.Add(this.PauseScreen);
             this.Screen.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Screen.Location = new System.Drawing.Point(0, 0);
             this.Screen.Name = "Screen";
             this.Screen.Size = new System.Drawing.Size(624, 441);
             this.Screen.TabIndex = 0;
             // 
-            // HighScoreLbl
+            // PauseScreen
             // 
-            this.HighScoreLbl.AutoSize = true;
-            this.HighScoreLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.HighScoreLbl.Location = new System.Drawing.Point(585, 35);
-            this.HighScoreLbl.Name = "HighScoreLbl";
-            this.HighScoreLbl.Size = new System.Drawing.Size(15, 16);
-            this.HighScoreLbl.TabIndex = 7;
-            this.HighScoreLbl.Text = "0";
+            this.PauseScreen.BackColor = System.Drawing.Color.Transparent;
+            this.PauseScreen.Controls.Add(this.InstructionsLbl);
+            this.PauseScreen.Controls.Add(this.PauseLbl);
+            this.PauseScreen.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PauseScreen.Enabled = false;
+            this.PauseScreen.Location = new System.Drawing.Point(0, 0);
+            this.PauseScreen.Name = "PauseScreen";
+            this.PauseScreen.Size = new System.Drawing.Size(624, 441);
+            this.PauseScreen.TabIndex = 8;
+            this.PauseScreen.Visible = false;
+            // 
+            // InstructionsLbl
+            // 
+            this.InstructionsLbl.Enabled = false;
+            this.InstructionsLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.InstructionsLbl.Location = new System.Drawing.Point(214, 220);
+            this.InstructionsLbl.Name = "InstructionsLbl";
+            this.InstructionsLbl.Size = new System.Drawing.Size(195, 34);
+            this.InstructionsLbl.TabIndex = 1;
+            this.InstructionsLbl.Text = "Press \"Enter\" to continue";
+            this.InstructionsLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.InstructionsLbl.Visible = false;
+            // 
+            // PauseLbl
+            // 
+            this.PauseLbl.AutoSize = true;
+            this.PauseLbl.Enabled = false;
+            this.PauseLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.PauseLbl.Location = new System.Drawing.Point(225, 144);
+            this.PauseLbl.Name = "PauseLbl";
+            this.PauseLbl.Size = new System.Drawing.Size(166, 55);
+            this.PauseLbl.TabIndex = 0;
+            this.PauseLbl.Text = "Pause";
+            this.PauseLbl.Visible = false;
+            // 
+            // highScoreLbl
+            // 
+            this.highScoreLbl.AutoSize = true;
+            this.highScoreLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.highScoreLbl.Location = new System.Drawing.Point(585, 35);
+            this.highScoreLbl.Name = "highScoreLbl";
+            this.highScoreLbl.Size = new System.Drawing.Size(15, 16);
+            this.highScoreLbl.TabIndex = 7;
+            this.highScoreLbl.Text = "0";
             // 
             // label4
             // 
@@ -97,7 +139,6 @@
             this.label3.Size = new System.Drawing.Size(15, 16);
             this.label3.TabIndex = 5;
             this.label3.Text = "0";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label2
             // 
@@ -120,7 +161,6 @@
             this.NakovCharacter.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.NakovCharacter.TabIndex = 0;
             this.NakovCharacter.TabStop = false;
-            this.NakovCharacter.Click += new System.EventHandler(this.NakovCharacter_Click);
             // 
             // label1
             // 
@@ -148,7 +188,6 @@
             this.Ground.Name = "Ground";
             this.Ground.Size = new System.Drawing.Size(624, 12);
             this.Ground.TabIndex = 1;
-            this.Ground.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // PlayerMovement
             // 
@@ -217,6 +256,8 @@
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.Screen.ResumeLayout(false);
             this.Screen.PerformLayout();
+            this.PauseScreen.ResumeLayout(false);
+            this.PauseScreen.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NakovCharacter)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Nakov)).EndInit();
             this.ResumeLayout(false);
@@ -240,8 +281,11 @@
         private System.Windows.Forms.Timer WalkAnimation;
         private System.Windows.Forms.PictureBox Nakov;
         private System.Windows.Forms.Timer ScoreTimer;
-        public System.Windows.Forms.Label HighScoreLbl;
+        public System.Windows.Forms.Label highScoreLbl;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Panel PauseScreen;
+        private System.Windows.Forms.Label InstructionsLbl;
+        private System.Windows.Forms.Label PauseLbl;
     }
 }
 
