@@ -18,10 +18,10 @@ namespace WhereIsMyBeer
             if (Form1.score < Form1.highScore)
             {
                 FinalScore.Text = Form1.score.ToString();
-                label3.Text = Form1.highScore.ToString();
+                HoghScore.Text = Form1.highScore.ToString();
                 label1.Left = 320 - (label1.Width / 2) - (FinalScore.Width / 2) - 10;
-                label2.Left = 320 - (label2.Width / 2) - (label3.Width / 2) - 10;
-                label3.Left = label2.Left + label2.Width + 10;
+                label2.Left = 320 - (label2.Width / 2) - (HoghScore.Width / 2) - 10;
+                HoghScore.Left = label2.Left + label2.Width + 10;
                 FinalScore.Left = label1.Left + label1.Width + 10;
                 Form1.score = 0;
             }
@@ -31,9 +31,9 @@ namespace WhereIsMyBeer
                 label1.Text = "Congratulations!";
                 label1.Left = 320 - (label1.Width / 2) - (FinalScore.Width / 2);
                 label2.Text = "Your new High Score is";
-                label2.Left = 320 - (label2.Width / 2) - (label3.Width / 2) - 10;
-                label3.Text = Form1.score.ToString();
-                label3.Left = label2.Left + label2.Width + 10;
+                label2.Left = 320 - (label2.Width / 2) - (HoghScore.Width / 2) - 10;
+                HoghScore.Text = Form1.score.ToString();
+                HoghScore.Left = label2.Left + label2.Width + 10;
                 Form1.score = 0;
             }
         }

@@ -16,9 +16,8 @@ namespace WhereIsMyBeer
         public static int score = 0;
         public static int highScore = 0;
 
-        private bool HasSuperPower = false;
+        private bool hasSuperPower = false;
         private bool jump;
-        private bool isPaused = false;
 
         private Random randomLocation = new Random();
         private Random randomInterval = new Random();
@@ -33,6 +32,8 @@ namespace WhereIsMyBeer
         private Stack<PictureBox> lives = new Stack<PictureBox>();
 
         private string highScorePath = "highScore.txt";
+
+        System.Media.SoundPlayer player = new System.Media.SoundPlayer();
 
 
         public Form1()
@@ -118,7 +119,7 @@ namespace WhereIsMyBeer
                         obstacles.RemoveAt(j);
                         indexObstacles--;
                         j--;
-                        if (HasSuperPower == false)
+                        if (hasSuperPower == false)
                         {
                             Screen.Controls.Remove(lives.Pop());
                         }
@@ -166,14 +167,13 @@ namespace WhereIsMyBeer
                         }
                         else
                         {
-                            score += 50;
-                            HasSuperPower = true;
-                            System.Media.SoundPlayer player = new System.Media.SoundPlayer();
+                            score += 20;
+                            hasSuperPower = true;
                             player.SoundLocation = "beer.wav";
                             player.Play();
                             Beer_O_Meter.Value = 5;
                             await Task.Delay(20000);
-                            HasSuperPower = false;
+                            hasSuperPower = false;
                         }
                     }
                     else if (coldBeers[j].Left < -coldBeers[j].Width)
@@ -218,6 +218,7 @@ namespace WhereIsMyBeer
 
         private void ScoreTimer_Tick(object sender, EventArgs e)
         {
+            // Print score
             label3.Visible = false;
             label3.Text = score.ToString();
             label3.Visible = true;
@@ -225,6 +226,7 @@ namespace WhereIsMyBeer
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
+            // Create jump and double jump
             if (jump != true)
             {
                 if (e.KeyCode == Keys.Space)
@@ -250,6 +252,7 @@ namespace WhereIsMyBeer
                     }
                 }
             }
+            // Create Pause
             if (e.KeyCode == Keys.Escape || e.KeyCode == Keys.P)
             {
                 PauseScreenFunction(true);
@@ -301,6 +304,7 @@ namespace WhereIsMyBeer
                 PlayerMovement.Stop();
                 WalkAnimation.Stop();
                 ScoreTimer.Stop();
+                player.Stop();
             }
             else
             {
@@ -368,7 +372,6 @@ namespace WhereIsMyBeer
                     coldBeer.Left = obstacles[i].Left + new Random().Next(71, 160);
                 }
             }
-
 
             coldBeers.Add(coldBeer);
             Screen.Controls.Add(coldBeer);

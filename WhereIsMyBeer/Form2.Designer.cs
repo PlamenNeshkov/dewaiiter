@@ -28,25 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
+            this.NewGame = new System.Windows.Forms.Button();
             this.GameOver = new System.Windows.Forms.Label();
             this.FinalScore = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.HoghScore = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // button1
+            // NewGame
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(252, 331);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(136, 36);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "New Game";
-            this.button1.UseMnemonic = false;
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.NewGame.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.NewGame.Location = new System.Drawing.Point(252, 320);
+            this.NewGame.Name = "NewGame";
+            this.NewGame.Size = new System.Drawing.Size(136, 36);
+            this.NewGame.TabIndex = 1;
+            this.NewGame.Text = "New Game";
+            this.NewGame.UseMnemonic = false;
+            this.NewGame.UseVisualStyleBackColor = true;
+            this.NewGame.Click += new System.EventHandler(this.button1_Click);
             // 
             // GameOver
             // 
@@ -74,7 +74,7 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.Location = new System.Drawing.Point(233, 166);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(146, 20);
+            this.label1.Size = new System.Drawing.Size(150, 20);
             this.label1.TabIndex = 4;
             this.label1.Text = "Your Final Score is: ";
             // 
@@ -88,27 +88,27 @@
             this.label2.TabIndex = 5;
             this.label2.Text = "Your High Score is";
             // 
-            // label3
+            // HoghScore
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(385, 234);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(18, 20);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "0";
+            this.HoghScore.AutoSize = true;
+            this.HoghScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.HoghScore.Location = new System.Drawing.Point(385, 234);
+            this.HoghScore.Name = "HoghScore";
+            this.HoghScore.Size = new System.Drawing.Size(18, 20);
+            this.HoghScore.TabIndex = 6;
+            this.HoghScore.Text = "0";
             // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(624, 441);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.HoghScore);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.FinalScore);
             this.Controls.Add(this.GameOver);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.NewGame);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form2";
@@ -120,11 +120,11 @@
         }
 
         #endregion
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button NewGame;
         private System.Windows.Forms.Label GameOver;
         private System.Windows.Forms.Label FinalScore;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label HoghScore;
     }
 }
