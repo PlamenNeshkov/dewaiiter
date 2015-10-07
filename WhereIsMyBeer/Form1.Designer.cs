@@ -44,6 +44,8 @@
             this.WalkAnimation = new System.Windows.Forms.Timer(this.components);
             this.Nakov = new System.Windows.Forms.PictureBox();
             this.ScoreTimer = new System.Windows.Forms.Timer(this.components);
+            this.label4 = new System.Windows.Forms.Label();
+            this.HighScoreLbl = new System.Windows.Forms.Label();
             this.Screen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NakovCharacter)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Nakov)).BeginInit();
@@ -51,6 +53,8 @@
             // 
             // Screen
             // 
+            this.Screen.Controls.Add(this.HighScoreLbl);
+            this.Screen.Controls.Add(this.label4);
             this.Screen.Controls.Add(this.label3);
             this.Screen.Controls.Add(this.label2);
             this.Screen.Controls.Add(this.NakovCharacter);
@@ -78,7 +82,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(548, 9);
+            this.label2.Location = new System.Drawing.Point(507, 9);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(47, 16);
             this.label2.TabIndex = 4;
@@ -176,6 +180,26 @@
             this.ScoreTimer.Enabled = true;
             this.ScoreTimer.Tick += new System.EventHandler(this.ScoreTimer_Tick);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label4.Location = new System.Drawing.Point(507, 35);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(78, 16);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "High Score:";
+            // 
+            // HighScoreLbl
+            // 
+            this.HighScoreLbl.AutoSize = true;
+            this.HighScoreLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.HighScoreLbl.Location = new System.Drawing.Point(601, 35);
+            this.HighScoreLbl.Name = "HighScoreLbl";
+            this.HighScoreLbl.Size = new System.Drawing.Size(15, 16);
+            this.HighScoreLbl.TabIndex = 7;
+            this.HighScoreLbl.Text = "0";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -214,6 +238,8 @@
         private System.Windows.Forms.Timer WalkAnimation;
         private System.Windows.Forms.PictureBox Nakov;
         private System.Windows.Forms.Timer ScoreTimer;
+        public System.Windows.Forms.Label HighScoreLbl;
+        private System.Windows.Forms.Label label4;
     }
 }
 

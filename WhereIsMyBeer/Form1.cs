@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace WhereIsMyBeer
 {
@@ -31,6 +32,8 @@ namespace WhereIsMyBeer
 
         PictureBox life = new PictureBox();
         Stack<PictureBox> lives = new Stack<PictureBox>();
+
+        string highscorePath = "highscore.txt";
 
         public Form1()
         {
@@ -60,10 +63,7 @@ namespace WhereIsMyBeer
                         Screen.Controls.Remove(lives.Pop());
                         if (lives.Count == 0)
                         {
-                            Hide();
-                            Form2 form2 = new Form2();
-                            form2.ShowDialog();
-                            Dispose();
+                            GameOver();
                         }
                     }
                 }
@@ -157,10 +157,7 @@ namespace WhereIsMyBeer
                         }
                         if (lives.Count == 0)
                         {
-                            Hide();
-                            Form2 form2 = new Form2();
-                            form2.ShowDialog();
-                            Dispose();
+                            GameOver();
                         }
                     }
                     else if (obstacles[j].Left < -obstacles[j].Width)
@@ -176,6 +173,12 @@ namespace WhereIsMyBeer
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            //Read highsore
+            if (File.Exists(highscorePath))
+            {
+                HighScoreLbl.Text = File.ReadAllText(highscorePath);
+            }
+
             //Create lives' pictureboxes
             life = new PictureBox();
             for (int i = 0; i < 3; i++)
@@ -357,6 +360,23 @@ namespace WhereIsMyBeer
             label3.Visible = false;
             label3.Text = score.ToString();
             label3.Visible = true;
+        }
+
+        private void GameOver()
+        {
+            if (!File.Exists(highscorePath))
+            {
+                File.WriteAllText(highscorePath, "0");
+            }
+            int highscore = int.Parse(File.ReadAllText(highscorePath));
+            if (score > highscore)
+            {
+                File.WriteAllText(highscorePath, Convert.ToString(score));
+            }
+            Hide();
+            Form2 form2 = new Form2();
+            form2.ShowDialog();
+            Dispose();
         }
     }
 }
