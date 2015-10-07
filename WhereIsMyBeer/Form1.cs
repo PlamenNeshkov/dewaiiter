@@ -351,8 +351,6 @@ namespace WhereIsMyBeer
             label3.Text = score.ToString();
             label3.Visible = true;
         }
-
-<<<<<<< HEAD
         private void GameOver()
         {
             if (!File.Exists(highscorePath))
@@ -368,11 +366,10 @@ namespace WhereIsMyBeer
             Form2 form2 = new Form2();
             form2.ShowDialog();
             Dispose();
-=======
+        }
         private void NakovCharacter_Click(object sender, EventArgs e)
         {
 
->>>>>>> origin/master
         }
     }
 }
