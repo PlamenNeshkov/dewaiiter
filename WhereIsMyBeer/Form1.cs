@@ -168,8 +168,11 @@ namespace WhereIsMyBeer
                         {
                             score += 50;
                             HasSuperPower = true;
+                            System.Media.SoundPlayer player = new System.Media.SoundPlayer();
+                            player.SoundLocation = "beer.wav";
+                            player.Play();
                             Beer_O_Meter.Value = 5;
-                            await Task.Delay(10000);
+                            await Task.Delay(20000);
                             HasSuperPower = false;
                         }
                     }
@@ -262,12 +265,13 @@ namespace WhereIsMyBeer
 
         private void GameOver()
         {
-            highScore = int.Parse(File.ReadAllText(highScorePath));
-
             if (!File.Exists(highScorePath))
             {
                 File.WriteAllText(highScorePath, "0");
             }
+
+            highScore = int.Parse(File.ReadAllText(highScorePath));
+
             if (score > highScore)
             {
                 File.WriteAllText(highScorePath, Convert.ToString(score));
