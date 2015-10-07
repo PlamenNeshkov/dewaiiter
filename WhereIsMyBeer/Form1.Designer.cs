@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.Screen = new System.Windows.Forms.Panel();
+            this.HighScoreLbl = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.NakovCharacter = new System.Windows.Forms.PictureBox();
@@ -45,8 +47,6 @@
             this.WalkAnimation = new System.Windows.Forms.Timer(this.components);
             this.Nakov = new System.Windows.Forms.PictureBox();
             this.ScoreTimer = new System.Windows.Forms.Timer(this.components);
-            this.label4 = new System.Windows.Forms.Label();
-            this.HighScoreLbl = new System.Windows.Forms.Label();
             this.Screen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NakovCharacter)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Nakov)).BeginInit();
@@ -67,6 +67,26 @@
             this.Screen.Name = "Screen";
             this.Screen.Size = new System.Drawing.Size(624, 441);
             this.Screen.TabIndex = 0;
+            // 
+            // HighScoreLbl
+            // 
+            this.HighScoreLbl.AutoSize = true;
+            this.HighScoreLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.HighScoreLbl.Location = new System.Drawing.Point(601, 35);
+            this.HighScoreLbl.Name = "HighScoreLbl";
+            this.HighScoreLbl.Size = new System.Drawing.Size(15, 16);
+            this.HighScoreLbl.TabIndex = 7;
+            this.HighScoreLbl.Text = "0";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label4.Location = new System.Drawing.Point(507, 35);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(78, 16);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "High Score:";
             // 
             // label3
             // 
@@ -96,7 +116,7 @@
             this.NakovCharacter.ImageLocation = "";
             this.NakovCharacter.Location = new System.Drawing.Point(13, 321);
             this.NakovCharacter.Name = "NakovCharacter";
-            this.NakovCharacter.Size = new System.Drawing.Size(68, 108);
+            this.NakovCharacter.Size = new System.Drawing.Size(44, 108);
             this.NakovCharacter.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.NakovCharacter.TabIndex = 0;
             this.NakovCharacter.TabStop = false;
@@ -181,26 +201,6 @@
             // 
             this.ScoreTimer.Enabled = true;
             this.ScoreTimer.Tick += new System.EventHandler(this.ScoreTimer_Tick);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(507, 35);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(78, 16);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "High Score:";
-            // 
-            // HighScoreLbl
-            // 
-            this.HighScoreLbl.AutoSize = true;
-            this.HighScoreLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.HighScoreLbl.Location = new System.Drawing.Point(601, 35);
-            this.HighScoreLbl.Name = "HighScoreLbl";
-            this.HighScoreLbl.Size = new System.Drawing.Size(15, 16);
-            this.HighScoreLbl.TabIndex = 7;
-            this.HighScoreLbl.Text = "0";
             // 
             // Form1
             // 

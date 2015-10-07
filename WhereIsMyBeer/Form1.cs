@@ -353,7 +353,7 @@ namespace WhereIsMyBeer
         }
         private void GameOver()
         {
-            if (!File.Exists(highscorePath))
+            if (!File.Exists(highscorePath)) 
             {
                 File.WriteAllText(highscorePath, "0");
             }
