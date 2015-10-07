@@ -38,7 +38,7 @@ namespace WhereIsMyBeer
         public Form1()
         {
             InitializeComponent();
-            Beer_O_Meter.Maximum = 110;
+            Beer_O_Meter.Maximum = 65;
             Beer_O_Meter.Value = 5;
         }
         private void Form1_KeyDown(object sender, KeyEventArgs e)
@@ -57,7 +57,7 @@ namespace WhereIsMyBeer
                     if (Beer_O_Meter.Value > 0)
                     {
                         Beer_O_Meter.Value -= 1;
-                    } 
+                    }
                     if (Beer_O_Meter.Value == 0)
                     {
                         Screen.Controls.Remove(lives.Pop());
@@ -108,21 +108,21 @@ namespace WhereIsMyBeer
             {
                 case 1:
                     obstacle.BackgroundImage = WhereIsMyBeer.Properties.Resources.Student;
-                    obstacle.Height = 50;
+                    obstacle.Height = 70;
                     randomSize = new Random();
-                    obstacle.Width = 50;
+                    obstacle.Width = 60;
                     break;
                 case 2:
                     obstacle.BackgroundImage = WhereIsMyBeer.Properties.Resources.Desk;
                     obstacle.Height = 40;
                     randomSize = new Random();
-                    obstacle.Width = 40;
+                    obstacle.Width = 60;
                     break;
                 default:
                     break;
             }
             obstacle.BackgroundImageLayout = ImageLayout.Stretch;
-           
+
 
             randomInterval = new Random();
             randomLocation = new Random();
@@ -144,7 +144,7 @@ namespace WhereIsMyBeer
             {
                 if (lives.Count > 0)
                 {
-                    obstacles[j].Left -= 5;
+                    obstacles[j].Left -= 8;
                     if (NakovCharacter.Location.X + NakovCharacter.Width - 5 >= obstacles[j].Location.X && NakovCharacter.Location.X <= obstacles[j].Location.X + obstacles[j].Width && NakovCharacter.Location.Y + NakovCharacter.Height >= obstacles[j].Location.Y)
                     {
                         Screen.Controls.Remove(obstacles[j]);
@@ -197,24 +197,12 @@ namespace WhereIsMyBeer
             //Creates the initial obstacle
             obstacle = new PictureBox();
             Random obstaclesPicture = new Random();
-            int obstaclesPictureNumber = obstaclesPicture.Next(1, 3);
-            switch (obstaclesPictureNumber)
-            {
-                case 1:
-                    obstacle.BackgroundImage = WhereIsMyBeer.Properties.Resources.Student;
-                    obstacle.Height = 50;
-                    randomSize = new Random();
-                    obstacle.Width = 50;
-                    break;
-                case 2:
-                    obstacle.BackgroundImage = WhereIsMyBeer.Properties.Resources.Desk;
-                    obstacle.Height = 40;
-                    randomSize = new Random();
-                    obstacle.Width = 40;
-                    break;
-                default:
-                    break;
-            }
+
+            obstacle.BackgroundImage = WhereIsMyBeer.Properties.Resources.Student;
+            obstacle.Height = 70;
+            randomSize = new Random();
+            obstacle.Width = 60;
+
 
             obstacle.BackgroundImage = WhereIsMyBeer.Properties.Resources.Student;
             obstacle.BackgroundImageLayout = ImageLayout.Stretch;
@@ -235,12 +223,13 @@ namespace WhereIsMyBeer
             {
                 coldBeer = new PictureBox();
 
+                coldBeer.BackgroundImage = WhereIsMyBeer.Properties.Resources.Beer;
+                coldBeer.BackgroundImageLayout = ImageLayout.Stretch;
                 randomInterval = new Random();
                 randomLocation = new Random();
                 randomSize = new Random();
-                coldBeer.BackColor = Color.Green;
-                coldBeer.Height = 20;
-                coldBeer.Width = 10;
+                coldBeer.Height = 23;
+                coldBeer.Width = 11;
                 coldBeer.Top = 429 - coldBeer.Height;
                 coldBeer.Left = 720;
 
@@ -263,14 +252,15 @@ namespace WhereIsMyBeer
             randomLocation = new Random();
             randomSize = new Random();
 
-            coldBeer.BackColor = Color.Green;
-            coldBeer.Height = 20;
-            coldBeer.Width = 10;
+            coldBeer.BackgroundImage = WhereIsMyBeer.Properties.Resources.Beer;
+            coldBeer.BackgroundImageLayout = ImageLayout.Stretch;
+            coldBeer.Height = 23;
+            coldBeer.Width = 11;
             coldBeer.Top = 429 - coldBeer.Height;
             coldBeer.Left = 650;
             for (int i = 0; i < obstacles.Count; i++)
             {
-                while(coldBeer.Left <= obstacles[i].Left + 70 && coldBeer.Left >= obstacles[i].Left - 70)
+                while (coldBeer.Left <= obstacles[i].Left + 70 && coldBeer.Left >= obstacles[i].Left - 70)
                 {
                     coldBeer.Left = obstacles[i].Left + new Random().Next(71, 160);
                 }
@@ -290,7 +280,7 @@ namespace WhereIsMyBeer
             {
                 if (lives.Count > 0)
                 {
-                    coldBeers[j].Left -= 5;
+                    coldBeers[j].Left -= 8;
                     if (NakovCharacter.Location.X + NakovCharacter.Width - 5 >= coldBeers[j].Location.X && NakovCharacter.Location.X <= coldBeers[j].Location.X + coldBeers[j].Width && NakovCharacter.Location.Y + NakovCharacter.Height >= coldBeers[j].Location.Y)
                     {
                         Screen.Controls.Remove(coldBeers[j]);
@@ -362,6 +352,7 @@ namespace WhereIsMyBeer
             label3.Visible = true;
         }
 
+<<<<<<< HEAD
         private void GameOver()
         {
             if (!File.Exists(highscorePath))
@@ -377,6 +368,11 @@ namespace WhereIsMyBeer
             Form2 form2 = new Form2();
             form2.ShowDialog();
             Dispose();
+=======
+        private void NakovCharacter_Click(object sender, EventArgs e)
+        {
+
+>>>>>>> origin/master
         }
     }
 }
