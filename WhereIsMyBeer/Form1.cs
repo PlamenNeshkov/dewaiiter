@@ -20,6 +20,7 @@ namespace WhereIsMyBeer
         int indexColdBeers = 0;
         bool isHasSuperPower = false;
         public static int score = 0;
+        public static int highscore = 0;
         Random randomLocation = new Random();
         Random randomSize = new Random();
         Random randomInterval = new Random();
@@ -287,7 +288,7 @@ namespace WhereIsMyBeer
                         coldBeers.RemoveAt(j);
                         indexColdBeers--;
                         score += 1;
-                        if (Beer_O_Meter.Value < 105)
+                        if (Beer_O_Meter.Value < 60)
                         {
                             Beer_O_Meter.Value += 5;
                         }
@@ -357,7 +358,7 @@ namespace WhereIsMyBeer
             {
                 File.WriteAllText(highscorePath, "0");
             }
-            int highscore = int.Parse(File.ReadAllText(highscorePath));
+            highscore = int.Parse(File.ReadAllText(highscorePath));
             if (score > highscore)
             {
                 File.WriteAllText(highscorePath, Convert.ToString(score));

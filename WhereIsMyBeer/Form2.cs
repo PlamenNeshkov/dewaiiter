@@ -15,8 +15,27 @@ namespace WhereIsMyBeer
         public Form2()
         {
             InitializeComponent();
-            FinalScore.Text = Form1.score.ToString();
-            Form1.score = 0;
+            if (Form1.score < Form1.highscore)
+            {
+                FinalScore.Text = Form1.score.ToString();
+                label3.Text = Form1.highscore.ToString();
+                label1.Left = 320 - (label1.Width / 2) - (FinalScore.Width / 2) - 10;
+                label2.Left = 320 - (label2.Width / 2) - (label3.Width / 2) - 10;
+                label3.Left = label2.Left + label2.Width + 10;
+                FinalScore.Left = label1.Left + label1.Width + 10;
+                Form1.score = 0;
+            }
+            else
+            {
+                FinalScore.Text = "";
+                label1.Text = "Congratulations!";
+                label1.Left = 320 - (label1.Width / 2) - (FinalScore.Width / 2);
+                label2.Text = "Your new High Score is";
+                label2.Left = 320 - (label2.Width / 2) - (label3.Width / 2) - 10;
+                label3.Text = Form1.score.ToString();
+                label3.Left = label2.Left + label2.Width + 10;
+                Form1.score = 0;
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -33,6 +52,11 @@ namespace WhereIsMyBeer
         }
 
         private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
         {
 
         }
