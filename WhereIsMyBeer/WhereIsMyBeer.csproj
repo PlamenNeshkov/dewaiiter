@@ -100,26 +100,21 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Nakov2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Nakov3.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Nakov4.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Nakov1.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\barrel.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\liver.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Nakov3.png" />
+    <None Include="Resources\Nakov2.png" />
+    <None Include="Resources\Nakov1.png" />
+    <None Include="Resources\Nakov4.png" />
+    <None Include="Resources\Samo chin.png" />
     <None Include="Resources\Student.png" />
     <None Include="Resources\Desk.png" />
+    <None Include="Resources\Beer.png" />
+    <None Include="Resources\Chovek.png" />
     <Content Include="Resources\heart.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

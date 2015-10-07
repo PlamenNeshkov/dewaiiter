@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.Screen = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -87,14 +88,15 @@
             // NakovCharacter
             // 
             this.NakovCharacter.BackColor = System.Drawing.Color.Transparent;
-            this.NakovCharacter.Image = global::WhereIsMyBeer.Properties.Resources.Nakov1;
+            this.NakovCharacter.Image = ((System.Drawing.Image)(resources.GetObject("NakovCharacter.Image")));
             this.NakovCharacter.ImageLocation = "";
-            this.NakovCharacter.Location = new System.Drawing.Point(12, 329);
+            this.NakovCharacter.Location = new System.Drawing.Point(13, 321);
             this.NakovCharacter.Name = "NakovCharacter";
-            this.NakovCharacter.Size = new System.Drawing.Size(38, 100);
-            this.NakovCharacter.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.NakovCharacter.Size = new System.Drawing.Size(68, 108);
+            this.NakovCharacter.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.NakovCharacter.TabIndex = 0;
             this.NakovCharacter.TabStop = false;
+            this.NakovCharacter.Click += new System.EventHandler(this.NakovCharacter_Click);
             // 
             // label1
             // 
