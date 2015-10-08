@@ -48,11 +48,12 @@
             this.WalkAnimation = new System.Windows.Forms.Timer(this.components);
             this.Nakov = new System.Windows.Forms.PictureBox();
             this.ScoreTimer = new System.Windows.Forms.Timer(this.components);
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.Screen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NakovCharacter)).BeginInit();
+            this.PauseScreen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Nakov)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // Screen
@@ -85,6 +86,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label4.Location = new System.Drawing.Point(493, 35);
             this.label4.Name = "label4";
@@ -105,6 +107,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label2.Location = new System.Drawing.Point(493, 9);
             this.label2.Name = "label2";
@@ -156,6 +159,8 @@
             // 
             this.PauseScreen.BackColor = System.Drawing.Color.Transparent;
             this.PauseScreen.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PauseScreen.BackgroundImage")));
+            this.PauseScreen.Controls.Add(this.label6);
+            this.PauseScreen.Controls.Add(this.label5);
             this.PauseScreen.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PauseScreen.Enabled = false;
             this.PauseScreen.Location = new System.Drawing.Point(0, 0);
@@ -216,24 +221,33 @@
             this.ScoreTimer.Enabled = true;
             this.ScoreTimer.Tick += new System.EventHandler(this.ScoreTimer_Tick);
             // 
-            // pictureBox1
+            // label5
             // 
-            this.pictureBox1.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(624, 441);
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Visible = false;
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label5.Location = new System.Drawing.Point(207, 142);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(206, 55);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "PAUSE ";
+            this.label5.Visible = false;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label6.Location = new System.Drawing.Point(161, 210);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(277, 24);
+            this.label6.TabIndex = 1;
+            this.label6.Text = "PRESS ENTER TO CONTINUE";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(624, 441);
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.Screen);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -246,8 +260,9 @@
             this.Screen.ResumeLayout(false);
             this.Screen.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NakovCharacter)).EndInit();
+            this.PauseScreen.ResumeLayout(false);
+            this.PauseScreen.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Nakov)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -272,7 +287,8 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel PauseScreen;
         private System.Windows.Forms.Panel Ground;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
     }
 }
 

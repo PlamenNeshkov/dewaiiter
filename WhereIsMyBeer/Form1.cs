@@ -290,7 +290,7 @@ namespace WhereIsMyBeer
             }
             else
             {
-                if (e.KeyCode == Keys.Space)
+                if (e.KeyCode == Keys.Enter)
                 {
                     PauseScreenFunction(false);
                 }
@@ -320,6 +320,12 @@ namespace WhereIsMyBeer
         private void PauseScreenFunction(bool isOnPause)
         {
             PauseScreen.BringToFront();
+            PauseScreen.Visible = isOnPause;
+            label5.Visible = isOnPause;
+            label6.Visible = isOnPause;
+            PauseScreen.Enabled = isOnPause;
+            label5.Enabled = isOnPause;
+            label6.Enabled = isOnPause;
             if (isOnPause)
             {
                 ObstaclesCreation.Stop();
@@ -330,8 +336,6 @@ namespace WhereIsMyBeer
                 WalkAnimation.Stop();
                 ScoreTimer.Stop();
                 player.Stop();
-                pictureBox1.Visible = true;
-                
             }
             else
             {
@@ -342,7 +346,6 @@ namespace WhereIsMyBeer
                 PlayerMovement.Start();
                 WalkAnimation.Start();
                 ScoreTimer.Start();
-                pictureBox1.Visible = false;
             }
         }
 
