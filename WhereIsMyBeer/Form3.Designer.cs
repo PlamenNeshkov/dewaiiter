@@ -35,7 +35,7 @@
             // NewGame
             // 
             this.NewGame.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.NewGame.Location = new System.Drawing.Point(252, 300);
+            this.NewGame.Location = new System.Drawing.Point(246, 399);
             this.NewGame.Name = "NewGame";
             this.NewGame.Size = new System.Drawing.Size(136, 36);
             this.NewGame.TabIndex = 0;
@@ -52,14 +52,18 @@
             this.GamesName.Size = new System.Drawing.Size(315, 42);
             this.GamesName.TabIndex = 1;
             this.GamesName.Text = "Where Is My Beer";
+            this.GamesName.Visible = false;
             // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::WhereIsMyBeer.Properties.Resources.Start;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(624, 441);
             this.Controls.Add(this.GamesName);
             this.Controls.Add(this.NewGame);
+            this.DoubleBuffered = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form3";

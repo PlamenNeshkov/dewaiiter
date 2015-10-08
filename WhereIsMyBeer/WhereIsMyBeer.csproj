@@ -106,6 +106,7 @@
     <None Include="Resources\liver.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Start.png" />
     <None Include="Resources\Nakov3.png" />
     <None Include="Resources\Nakov2.png" />
     <None Include="Resources\Nakov1.png" />
@@ -115,6 +116,8 @@
     <None Include="Resources\Desk.png" />
     <None Include="Resources\Beer.png" />
     <None Include="Resources\Chovek.png" />
+    <None Include="Resources\Background.png" />
+    <None Include="Resources\12112544_875014299219114_1770041806_o.jpg" />
     <Content Include="Resources\heart.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

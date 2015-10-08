@@ -378,5 +378,10 @@ namespace WhereIsMyBeer
 
             indexColdBeers++;
         }
+
+        private void NakovCharacter_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

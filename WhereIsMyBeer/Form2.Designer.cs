@@ -39,7 +39,7 @@
             // NewGame
             // 
             this.NewGame.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.NewGame.Location = new System.Drawing.Point(252, 320);
+            this.NewGame.Location = new System.Drawing.Point(444, 359);
             this.NewGame.Name = "NewGame";
             this.NewGame.Size = new System.Drawing.Size(136, 36);
             this.NewGame.TabIndex = 1;
@@ -57,12 +57,13 @@
             this.GameOver.Size = new System.Drawing.Size(210, 42);
             this.GameOver.TabIndex = 2;
             this.GameOver.Text = "Game Over";
+            this.GameOver.Visible = false;
             // 
             // FinalScore
             // 
             this.FinalScore.AutoSize = true;
             this.FinalScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.FinalScore.Location = new System.Drawing.Point(385, 166);
+            this.FinalScore.Location = new System.Drawing.Point(385, 187);
             this.FinalScore.Name = "FinalScore";
             this.FinalScore.Size = new System.Drawing.Size(18, 20);
             this.FinalScore.TabIndex = 3;
@@ -72,7 +73,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(233, 166);
+            this.label1.Location = new System.Drawing.Point(233, 187);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(150, 20);
             this.label1.TabIndex = 4;
@@ -82,7 +83,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(238, 234);
+            this.label2.Location = new System.Drawing.Point(238, 255);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(141, 20);
             this.label2.TabIndex = 5;
@@ -92,7 +93,7 @@
             // 
             this.HoghScore.AutoSize = true;
             this.HoghScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.HoghScore.Location = new System.Drawing.Point(385, 234);
+            this.HoghScore.Location = new System.Drawing.Point(385, 255);
             this.HoghScore.Name = "HoghScore";
             this.HoghScore.Size = new System.Drawing.Size(18, 20);
             this.HoghScore.TabIndex = 6;
@@ -102,6 +103,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::WhereIsMyBeer.Properties.Resources._12112544_875014299219114_1770041806_o;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(624, 441);
             this.Controls.Add(this.HoghScore);
             this.Controls.Add(this.label2);
