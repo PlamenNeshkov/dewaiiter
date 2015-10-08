@@ -95,7 +95,48 @@ namespace WhereIsMyBeer
             {
                 NakovCharacter.Top += 1;
             }
+        }
 
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            // Create jump and double jump
+            if (jump != true)
+            {
+                if (e.KeyCode == Keys.Space)
+                {
+                    jump = true;
+                    force = g;
+                }
+                if (e.Modifiers == Keys.Shift && e.KeyCode == Keys.Space)
+                {
+                    jump = true;
+                    force = g + 5;
+                    if (beerometer.Value > 0)
+                    {
+                        beerometer.Value -= 1;
+                    }
+                    if (beerometer.Value == 0)
+                    {
+                        Screen.Controls.Remove(lives.Pop());
+                        if (lives.Count == 0)
+                        {
+                            GameOver();
+                        }
+                    }
+                }
+            }
+            // Create Pause
+            if (e.KeyCode == Keys.Escape || e.KeyCode == Keys.P)
+            {
+                PauseScreenFunction(true);
+            }
+            else
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    PauseScreenFunction(false);
+                }
+            }
         }
 
         private void ObstaclesCreation_Tick(object sender, EventArgs e)
@@ -139,13 +180,6 @@ namespace WhereIsMyBeer
             }
         }
 
-        private void ColdBeersCreation_Tick(object sender, EventArgs e)
-        {
-            // Creates a random sized cold beer at ground level outside the visible part of the screen
-            ColdBeerCreationFunction();
-            ColdBeersCreation.Interval = randomInterval.Next(1000, 5000);
-        }
-
         private async void ColdBeersMovement_Tick(object sender, EventArgs e)
         {
             for (int j = 0; j < coldBeers.Count; j++)
@@ -185,6 +219,48 @@ namespace WhereIsMyBeer
                     }
                 }
             }
+        }
+
+        private void ObstacleCreationFunction()
+        {
+            //Creates a random sized obstacle at ground level outside the visible part of the screen
+
+            obstacle = new PictureBox();
+            Random obstaclesPicture = new Random();
+            int obstaclesPictureNumber = obstaclesPicture.Next(1, 3);
+            switch (obstaclesPictureNumber)
+            {
+                case 1:
+                    obstacle.BackgroundImage = WhereIsMyBeer.Properties.Resources.Student;
+                    obstacle.Height = 70;
+                    obstacle.Width = 60;
+                    break;
+                case 2:
+                    obstacle.BackgroundImage = WhereIsMyBeer.Properties.Resources.Desk;
+                    obstacle.Height = 40;
+                    obstacle.Width = 60;
+                    break;
+                default:
+                    break;
+            }
+            obstacle.BackgroundImageLayout = ImageLayout.Stretch;
+
+            randomInterval = new Random();
+
+            obstacle.Top = 429 - obstacle.Height;
+            obstacle.Left = 700;
+
+            obstacles.Add(obstacle);
+            Screen.Controls.Add(obstacles[indexObstacles]);
+
+            indexObstacles++;
+        }
+
+        private void ColdBeersCreation_Tick(object sender, EventArgs e)
+        {
+            // Creates a random sized cold beer at ground level outside the visible part of the screen
+            ColdBeerCreationFunction();
+            ColdBeersCreation.Interval = randomInterval.Next(1000, 5000);
         }
 
         private void WalkAnimation_Tick(object sender, EventArgs e)
@@ -255,48 +331,6 @@ namespace WhereIsMyBeer
             label3.Visible = true;
         }
 
-        private void Form1_KeyDown(object sender, KeyEventArgs e)
-        {
-            // Create jump and double jump
-            if (jump != true)
-            {
-                if (e.KeyCode == Keys.Space)
-                {
-                    jump = true;
-                    force = g;
-                }
-                if (e.Modifiers == Keys.Shift && e.KeyCode == Keys.Space)
-                {
-                    jump = true;
-                    force = g + 5;
-                    if (beerometer.Value > 0)
-                    {
-                        beerometer.Value -= 1;
-                    }
-                    if (beerometer.Value == 0)
-                    {
-                        Screen.Controls.Remove(lives.Pop());
-                        if (lives.Count == 0)
-                        {
-                            GameOver();
-                        }
-                    }
-                }
-            }
-            // Create Pause
-            if (e.KeyCode == Keys.Escape || e.KeyCode == Keys.P)
-            {
-                PauseScreenFunction(true);
-            }
-            else
-            {
-                if (e.KeyCode == Keys.Enter)
-                {
-                    PauseScreenFunction(false);
-                }
-            }
-        }
-
         private void GameOver()
         {
             if (!File.Exists(highScorePath))
@@ -347,41 +381,6 @@ namespace WhereIsMyBeer
                 WalkAnimation.Start();
                 ScoreTimer.Start();
             }
-        }
-
-        private void ObstacleCreationFunction()
-        {
-            //Creates a random sized obstacle at ground level outside the visible part of the screen
-
-            obstacle = new PictureBox();
-            Random obstaclesPicture = new Random();
-            int obstaclesPictureNumber = obstaclesPicture.Next(1, 3);
-            switch (obstaclesPictureNumber)
-            {
-                case 1:
-                    obstacle.BackgroundImage = WhereIsMyBeer.Properties.Resources.Student;
-                    obstacle.Height = 70;
-                    obstacle.Width = 60;
-                    break;
-                case 2:
-                    obstacle.BackgroundImage = WhereIsMyBeer.Properties.Resources.Desk;
-                    obstacle.Height = 40;
-                    obstacle.Width = 60;
-                    break;
-                default:
-                    break;
-            }
-            obstacle.BackgroundImageLayout = ImageLayout.Stretch;
-
-            randomInterval = new Random();
-
-            obstacle.Top = 429 - obstacle.Height;
-            obstacle.Left = 700;
-
-            obstacles.Add(obstacle);
-            Screen.Controls.Add(obstacles[indexObstacles]);
-
-            indexObstacles++;
         }
 
         private void ColdBeerCreationFunction()
