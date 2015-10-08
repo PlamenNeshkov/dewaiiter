@@ -31,17 +31,15 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.Screen = new System.Windows.Forms.Panel();
-            this.PauseScreen = new System.Windows.Forms.Panel();
-            this.InstructionsLbl = new System.Windows.Forms.Label();
-            this.PauseLbl = new System.Windows.Forms.Label();
             this.highScoreLbl = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.NakovCharacter = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.Beer_O_Meter = new System.Windows.Forms.ProgressBar();
+            this.beerometer = new System.Windows.Forms.ProgressBar();
             this.Ground = new System.Windows.Forms.Panel();
+            this.PauseScreen = new System.Windows.Forms.Panel();
             this.PlayerMovement = new System.Windows.Forms.Timer(this.components);
             this.ObstaclesCreation = new System.Windows.Forms.Timer(this.components);
             this.ObstaclesMovement = new System.Windows.Forms.Timer(this.components);
@@ -50,10 +48,11 @@
             this.WalkAnimation = new System.Windows.Forms.Timer(this.components);
             this.Nakov = new System.Windows.Forms.PictureBox();
             this.ScoreTimer = new System.Windows.Forms.Timer(this.components);
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Screen.SuspendLayout();
-            this.PauseScreen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NakovCharacter)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Nakov)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // Screen
@@ -64,7 +63,7 @@
             this.Screen.Controls.Add(this.label2);
             this.Screen.Controls.Add(this.NakovCharacter);
             this.Screen.Controls.Add(this.label1);
-            this.Screen.Controls.Add(this.Beer_O_Meter);
+            this.Screen.Controls.Add(this.beerometer);
             this.Screen.Controls.Add(this.Ground);
             this.Screen.Controls.Add(this.PauseScreen);
             this.Screen.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -72,43 +71,6 @@
             this.Screen.Name = "Screen";
             this.Screen.Size = new System.Drawing.Size(624, 441);
             this.Screen.TabIndex = 0;
-            // 
-            // PauseScreen
-            // 
-            this.PauseScreen.BackColor = System.Drawing.Color.Transparent;
-            this.PauseScreen.Controls.Add(this.InstructionsLbl);
-            this.PauseScreen.Controls.Add(this.PauseLbl);
-            this.PauseScreen.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PauseScreen.Enabled = false;
-            this.PauseScreen.Location = new System.Drawing.Point(0, 0);
-            this.PauseScreen.Name = "PauseScreen";
-            this.PauseScreen.Size = new System.Drawing.Size(624, 441);
-            this.PauseScreen.TabIndex = 8;
-            this.PauseScreen.Visible = false;
-            // 
-            // InstructionsLbl
-            // 
-            this.InstructionsLbl.Enabled = false;
-            this.InstructionsLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.InstructionsLbl.Location = new System.Drawing.Point(214, 220);
-            this.InstructionsLbl.Name = "InstructionsLbl";
-            this.InstructionsLbl.Size = new System.Drawing.Size(195, 34);
-            this.InstructionsLbl.TabIndex = 1;
-            this.InstructionsLbl.Text = "Press \"Enter\" to continue";
-            this.InstructionsLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.InstructionsLbl.Visible = false;
-            // 
-            // PauseLbl
-            // 
-            this.PauseLbl.AutoSize = true;
-            this.PauseLbl.Enabled = false;
-            this.PauseLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.PauseLbl.Location = new System.Drawing.Point(225, 144);
-            this.PauseLbl.Name = "PauseLbl";
-            this.PauseLbl.Size = new System.Drawing.Size(166, 55);
-            this.PauseLbl.TabIndex = 0;
-            this.PauseLbl.Text = "Pause";
-            this.PauseLbl.Visible = false;
             // 
             // highScoreLbl
             // 
@@ -153,6 +115,7 @@
             // NakovCharacter
             // 
             this.NakovCharacter.BackColor = System.Drawing.Color.Transparent;
+            this.NakovCharacter.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.NakovCharacter.Image = ((System.Drawing.Image)(resources.GetObject("NakovCharacter.Image")));
             this.NakovCharacter.ImageLocation = "";
             this.NakovCharacter.Location = new System.Drawing.Point(13, 321);
@@ -174,12 +137,12 @@
             this.label1.UseMnemonic = false;
             this.label1.UseWaitCursor = true;
             // 
-            // Beer_O_Meter
+            // beerometer
             // 
-            this.Beer_O_Meter.Location = new System.Drawing.Point(214, 28);
-            this.Beer_O_Meter.Name = "Beer_O_Meter";
-            this.Beer_O_Meter.Size = new System.Drawing.Size(163, 23);
-            this.Beer_O_Meter.TabIndex = 2;
+            this.beerometer.Location = new System.Drawing.Point(214, 28);
+            this.beerometer.Name = "beerometer";
+            this.beerometer.Size = new System.Drawing.Size(163, 23);
+            this.beerometer.TabIndex = 2;
             // 
             // Ground
             // 
@@ -188,6 +151,18 @@
             this.Ground.Name = "Ground";
             this.Ground.Size = new System.Drawing.Size(624, 12);
             this.Ground.TabIndex = 1;
+            // 
+            // PauseScreen
+            // 
+            this.PauseScreen.BackColor = System.Drawing.Color.Transparent;
+            this.PauseScreen.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PauseScreen.BackgroundImage")));
+            this.PauseScreen.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PauseScreen.Enabled = false;
+            this.PauseScreen.Location = new System.Drawing.Point(0, 0);
+            this.PauseScreen.Name = "PauseScreen";
+            this.PauseScreen.Size = new System.Drawing.Size(624, 441);
+            this.PauseScreen.TabIndex = 8;
+            this.PauseScreen.Visible = false;
             // 
             // PlayerMovement
             // 
@@ -241,12 +216,26 @@
             this.ScoreTimer.Enabled = true;
             this.ScoreTimer.Tick += new System.EventHandler(this.ScoreTimer_Tick);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(624, 441);
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(624, 441);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.Screen);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form1";
@@ -256,10 +245,9 @@
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.Screen.ResumeLayout(false);
             this.Screen.PerformLayout();
-            this.PauseScreen.ResumeLayout(false);
-            this.PauseScreen.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NakovCharacter)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Nakov)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -269,11 +257,10 @@
         private System.Windows.Forms.Panel Screen;
         private System.Windows.Forms.PictureBox NakovCharacter;
         private System.Windows.Forms.Timer PlayerMovement;
-        private System.Windows.Forms.Panel Ground;
         private System.Windows.Forms.Timer ObstaclesCreation;
         private System.Windows.Forms.Timer ObstaclesMovement;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ProgressBar Beer_O_Meter;
+        private System.Windows.Forms.ProgressBar beerometer;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Timer ColdBeersCreation;
         private System.Windows.Forms.Timer ColdBeersMovement;
@@ -284,8 +271,8 @@
         public System.Windows.Forms.Label highScoreLbl;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel PauseScreen;
-        private System.Windows.Forms.Label InstructionsLbl;
-        private System.Windows.Forms.Label PauseLbl;
+        private System.Windows.Forms.Panel Ground;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

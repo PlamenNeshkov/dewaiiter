@@ -39,8 +39,8 @@ namespace WhereIsMyBeer
         public Form1()
         {
             InitializeComponent();
-            Beer_O_Meter.Maximum = 65;
-            Beer_O_Meter.Value = 5;
+            beerometer.Maximum = 65;
+            beerometer.Value = 5;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -161,9 +161,9 @@ namespace WhereIsMyBeer
                         coldBeers.RemoveAt(j);
                         indexColdBeers--;
                         score += 1;
-                        if (Beer_O_Meter.Value < 60)
+                        if (beerometer.Value < 60)
                         {
-                            Beer_O_Meter.Value += 5;
+                            beerometer.Value += 5;
                         }
                         else
                         {
@@ -171,7 +171,7 @@ namespace WhereIsMyBeer
                             hasSuperPower = true;
                             player.SoundLocation = "beer.wav";
                             player.Play();
-                            Beer_O_Meter.Value = 5;
+                            beerometer.Value = 5;
                             await Task.Delay(20000);
                             hasSuperPower = false;
                         }
@@ -189,30 +189,61 @@ namespace WhereIsMyBeer
 
         private void WalkAnimation_Tick(object sender, EventArgs e)
         {
-            switch (nakovAnim)
+            if (hasSuperPower==false)
             {
-                case 1:
-                    NakovCharacter.Image = WhereIsMyBeer.Properties.Resources.Nakov1;
-                    break;
-                case 2:
-                    NakovCharacter.Image = WhereIsMyBeer.Properties.Resources.Nakov2;
-                    break;
-                case 3:
-                    NakovCharacter.Image = WhereIsMyBeer.Properties.Resources.Nakov3;
-                    break;
-                case 4:
-                    NakovCharacter.Image = WhereIsMyBeer.Properties.Resources.Nakov4;
-                    break;
-                default:
-                    break;
-            }
-            if (nakovAnim == 4)
-            {
-                nakovAnim = 1;
+                switch (nakovAnim)
+                {
+                    case 1:
+                        NakovCharacter.Image = WhereIsMyBeer.Properties.Resources.Nakov1;
+                        break;
+                    case 2:
+                        NakovCharacter.Image = WhereIsMyBeer.Properties.Resources.Nakov2;
+                        break;
+                    case 3:
+                        NakovCharacter.Image = WhereIsMyBeer.Properties.Resources.Nakov3;
+                        break;
+                    case 4:
+                        NakovCharacter.Image = WhereIsMyBeer.Properties.Resources.Nakov4;
+                        break;
+                    default:
+                        break;
+                }
+                if (nakovAnim == 4)
+                {
+                    nakovAnim = 1;
+                }
+                else
+                {
+                    nakovAnim++;
+                }
             }
             else
             {
-                nakovAnim++;
+                switch (nakovAnim)
+                {
+                    case 1:
+                        NakovCharacter.Image = WhereIsMyBeer.Properties.Resources.SuperNakov1;
+                        break;
+                    case 2:
+                        NakovCharacter.Image = WhereIsMyBeer.Properties.Resources.SuperNakov2;
+                        break;
+                    case 3:
+                        NakovCharacter.Image = WhereIsMyBeer.Properties.Resources.SuperNakov3;
+                        break;
+                    case 4:
+                        NakovCharacter.Image = WhereIsMyBeer.Properties.Resources.SuperNakov4;
+                        break;
+                    default:
+                        break;
+                }
+                if (nakovAnim == 4)
+                {
+                    nakovAnim = 1;
+                }
+                else
+                {
+                    nakovAnim++;
+                }  
             }
         }
 
@@ -238,11 +269,11 @@ namespace WhereIsMyBeer
                 {
                     jump = true;
                     force = g + 5;
-                    if (Beer_O_Meter.Value > 0)
+                    if (beerometer.Value > 0)
                     {
-                        Beer_O_Meter.Value -= 1;
+                        beerometer.Value -= 1;
                     }
-                    if (Beer_O_Meter.Value == 0)
+                    if (beerometer.Value == 0)
                     {
                         Screen.Controls.Remove(lives.Pop());
                         if (lives.Count == 0)
@@ -259,7 +290,7 @@ namespace WhereIsMyBeer
             }
             else
             {
-                if (e.KeyCode == Keys.Enter)
+                if (e.KeyCode == Keys.Space)
                 {
                     PauseScreenFunction(false);
                 }
@@ -289,12 +320,6 @@ namespace WhereIsMyBeer
         private void PauseScreenFunction(bool isOnPause)
         {
             PauseScreen.BringToFront();
-            PauseScreen.Visible = isOnPause;
-            PauseLbl.Visible = isOnPause;
-            InstructionsLbl.Visible = isOnPause;
-            PauseScreen.Enabled = isOnPause;
-            PauseLbl.Enabled = isOnPause;
-            InstructionsLbl.Enabled = isOnPause;
             if (isOnPause)
             {
                 ObstaclesCreation.Stop();
@@ -305,6 +330,8 @@ namespace WhereIsMyBeer
                 WalkAnimation.Stop();
                 ScoreTimer.Stop();
                 player.Stop();
+                pictureBox1.Visible = true;
+                
             }
             else
             {
@@ -315,6 +342,7 @@ namespace WhereIsMyBeer
                 PlayerMovement.Start();
                 WalkAnimation.Start();
                 ScoreTimer.Start();
+                pictureBox1.Visible = false;
             }
         }
 
@@ -362,7 +390,7 @@ namespace WhereIsMyBeer
             coldBeer.BackgroundImage = WhereIsMyBeer.Properties.Resources.Beer;
             coldBeer.BackgroundImageLayout = ImageLayout.Stretch;
             coldBeer.Height = 23;
-            coldBeer.Width = 11;
+            coldBeer.Width = 9;
             coldBeer.Top = 429 - coldBeer.Height;
             coldBeer.Left = 650;
             for (int i = 0; i < obstacles.Count; i++)

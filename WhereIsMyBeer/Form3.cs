@@ -17,12 +17,15 @@ namespace WhereIsMyBeer
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Form3_KeyDown(object sender, KeyEventArgs e)
         {
-            Hide();
-            Form1 form1 = new Form1();
-            form1.ShowDialog();
-            Dispose();
+            if (e.KeyCode == Keys.Space)
+            {
+                Hide();
+                Form1 form1 = new Form1();
+                form1.ShowDialog();
+                Dispose();
+            }
         }
     }
 }
